@@ -1,49 +1,53 @@
-# 1 - Node, NPM, Yarn, and package.json
+# 1 - Node, NPM, Yarn, そして package.json
 
-In this section we will set up Node, NPM, Yarn, and a basic `package.json` file.
+このセクションでは Node, NPM, Yarn, そして基本的な `package.json` ファイルのセットアップを行います.
 
-First, we need to install Node, which is not only used for back-end JavaScript, but all the tools we need to build a modern Front-End stack.
+まず、バックエンドのJavaScriptとして使うためではなく、モダンなフロントエンドスタックを構築するためのツールとしても使われる、Nodeをインストールする必要があります。
 
-Head to the [download page](https://nodejs.org/en/download/current/) for macOS or Windows binaries, or the [package manager installations page](https://nodejs.org/en/download/package-manager/) for Linux distributions.
+macOS と Windows バイナリ用[ダウンロードページ](https://nodejs.org/en/download/current/) に行くか、Linuxディストリビューション用の[package manager installations page](https://nodejs.org/en/download/package-manager/) に行きます。
 
-For instance, on **Ubuntu / Debian**, you would run the following commands to install Node:
+たとえば、**Ubuntu / Debian** であれば、Nodeをインストールするために以下のコマンドを実行します。
 
 ```bash
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
-You want any version of Node > 6.5.0.
+Node のバージョンは > 6.5.0. であればどれでも構いません。
 
-`npm`, the default package manager for Node, comes automatically with Node, so you don't have to install it yourself.
+Nodeの標準パッケージマネージャー、`npm`はNodeに付属しているため、別途インストールする必要はありません。
 
-**Note**: If Node is already installed, install `nvm` ([Node Version Manager](https://github.com/creationix/nvm)), make `nvm` install and use the latest version of Node for you.
+**注意**: Node がすでにインストールされている場合、`nvm` ([Node Version Manager](https://github.com/creationix/nvm)) をインストールし、`nvm`を使って最新のNodeをインストールしてください。
 
-[Yarn](https://yarnpkg.com/) is another package manager which is much faster than NPM, caches packages offline, and fetches dependencies more predictably. Since it [came out](https://code.facebook.com/posts/1840075619545360) in October 2016, it received a very quick adoption and is becoming the new package manager of choice of the JavaScript community. We are going to use Yarn in this tutorial. If you want to stick to NPM you can simply replace all `yarn add` and `yarn add --dev` commands of this tutorial by `npm install --save` and `npm install --dev`.
+[Yarn](https://yarnpkg.com/)はNPMよりも高速なもう一つのパッケージマネージャで、パッケージをオフラインでキャッシュし、依存しているものをより期待通りに取得します。Yarnは2016年10月に[リリース](https://code.facebook.com/posts/1840075619545360)されて以来、パッケージマネージャの新たな選択肢としてJavaScriptコミュニティに急速に受け入れられつつあります。このチュートリアルではYarnを使っています。NPMを使いたい場合は、`yarn add` や `yarn add --dev` などのコマンドを、`npm install --save` や `npm install --dev`などと読み替えてください。
 
-- Install Yarn by following the [instructions](https://yarnpkg.com/en/docs/install). You can likely install it with `npm install -g yarn` or `sudo npm install -g yarn` (yeah, we're using NPM to install Yarn, much like you would use Internet Explorer or Safari to install Chrome!).
+- [手順](https://yarnpkg.com/en/docs/install)に従ってYarnをインストールします。`npm install -g yarn` や`sudo npm install -g yarn` などでインストールすることもできます（はい、YarnをインストールするのにNPMを使うのです。Internet Explorer や Safari を使って Chrome をインストールするようなものですね!）
 
-- Create a new folder to work in, and `cd` in it.
-- Run `yarn init` and answer the questions (`yarn init -y` to skip all questions), to generate a `package.json` file automatically.
-- Create an `index.js` file containing `console.log('Hello world')`.
-- Run `node .` in this folder (`index.js` is the default file Node looks for in the current folder). It should print "Hello world".
+- 新しい作業用フォルダを作り、`cd` で移動します。
+- `yarn init`を実行し、質問に答えると(`yarn init -y` で全ての質問をスキップできます)、`package.json`ファイルが自動生成されます。
+- `console.log('Hello world')`と書かれた`index.js`ファイルを作ります。
+- そのフォルダ内で`node .`と実行します (`index.js`はNodeがカレントフォルダ内で探すデフォルトのファイル名です)。"Hello world"と表示されるはずです。
 
-Running `node .` to execute our program is a bit too low-level. We are going to use an NPM/Yarn script to trigger the execution of that code instead. That will give us a nice abstraction to be able to always use `yarn start`, even when our program gets more complicated.
+`node .`でプログラムを実行させるのはやや低レベル寄りです。
+コードを実行のトリガーとしては、NPM/Yarnスクリプトを使います。
+より複雑なプログラムを実行させる場合でも、必ず `yarn start` を使うようにすれば、より適切な抽象化が行われているといえます。
 
-- In `package.json`, add `"start": "node ."` in the `scripts` object.
+- `package.json`内の`scripts`オブジェクトに`"start": "node ."`と追加します。
 
-`package.json` must be a valid JSON file, which means that you cannot have trailing commas. So be careful when editing manually your `package.json` file.
+`package.json`はvalidなJSONファイルでなければなりません。それはつまり、末尾のカンマを追加してはいけない、ということです。そのため、`package.json`ファイルを手で編集する際にはよく注意してください。
 
-- Run `yarn start`. It should print `Hello world`.
+- `yarn start`と実行します。`Hello world`と表示されるはずです。 
 
-- Create a `.gitignore` file and add the following to it:
+- `.gitignore`を作り、以下の内容を追加します。
 
 ```
 npm-debug.log
 yarn-error.log
 ```
 
-**Note**: If you take a look at the `package.json` files I provide, you will see a `tutorial-test` script in every chapter. Those scripts let me test that the chapter works fine when running `yarn && yarn start`. You can delete them in your own projects.
+**注意**: 私が作った`package.json`ファイル内には、各章に対して`tutorial-test`スクリプトがあります。このスクリプトは`yarn && yarn start`で各章が正しく実行されることを私自身がテストするためのものです。他のプロジェクトに使う場合には、ここは削除しても構いません。
 
-Next section: [2 - Installing and using a package](/tutorial/2-packages)
+原文: [1 - Node, NPM, Yarn, and package.json](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/1-node-npm-yarn-package-json)
 
-Back to the [table of contents](https://github.com/verekia/js-stack-from-scratch).
+次章: [2 - packageのインストールと使用](/tutorial/2-packages)
+
+[目次](https://github.com/verekia/js-stack-from-scratch)に戻る

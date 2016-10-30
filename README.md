@@ -1,4 +1,4 @@
-# JavaScript Stack from Scratch
+# ゼロから始めるJavaScriptスタック
 
 [![Yarn](/img/yarn.png)](https://yarnpkg.com/)
 [![React](/img/react.png)](https://facebook.github.io/react/)
@@ -12,57 +12,62 @@
 
 [![Build Status](https://travis-ci.org/verekia/js-stack-from-scratch.svg?branch=master)](https://travis-ci.org/verekia/js-stack-from-scratch)
 
-Welcome to my modern JavaScript stack tutorial: **JavaScript Stack from Scratch**.
+モダンJavaScriptスタックチュートリアル、**ゼロから始めるJavaScriptスタック** へようこそ。
 
-This is a minimalistic and straight to the point guide to assembling a JavaScript stack. It teaches you how to set up **ES6, Babel, Gulp, ESLint, React, Redux, Webpack, Immutable, Mocha, Chai, Sinon, and Flow**. It requires some general programming knowledge, and JavaScript basics. **It focuses on wiring all these tools together** and giving you the **simplest possible example** for each tool. You can see this tutorial as *a way to write your own boilerplate from scratch*.
+これはJavaScriptスタックを使い始めるための最短最速のガイドです。**ES6, Babel, Gulp, ESLint, React, Redux, Webpack, Immutable, Mocha, Chai, Sinon, Flow** のセットアップ方法をお伝えします。
+このガイドは一般的なプログラミングの知識とJavaScriptの基礎を前提としています。これら全てのツールを一緒につなぎ合わせることにフォーカスしており、各ツールについて**可能な限りシンプルな例**を提供します。このチュートリアルは、独自のボイラープレートを一から準備するための方法として見ることもできます。
 
-Since the goal of this tutorial is to assemble various tools, I do not go into details about how these tools work individually. Refer to their documentation or find other tutorials if you want to acquire deeper knowledge in them.
+このチュートリアルの目標はさまざまなツールを組み立てることにあるため、これらのツールの仕組みについて、それぞれの詳細については触れません。
+それらのより深い知識を習得したい場合、それぞれのドキュメントを参照するか、他のチュートリアルを探してください。
 
-A big chunk of the stack described in this tutorial uses React. A lot of React tutorials completely skip the setup part, which makes newcomers build their learning on weak foundations. Instead of giving beginners a "black box" configuration, the approach I'm taking here is to set up the foundations in the simplest possible way, for a thorough understanding.
+このチュートリアルで説明しているスタックはその大部分にReactを使用しています。Reactのチュートリアルの多くは、セットアップの部分を完全に省略しており、新規参入者は基礎がしっかりしていない中での学習を強いられています。初心者に「ブラックボックス」の設定を与えるのとは異なり、ここで行っているアプローチでは、徹底理解のために、可能な限り簡単な方法によるスタックのセットアップを行います。
 
-Code examples are available for each chapter, and you can run them all with `yarn && yarn start` or `npm install && npm start`. I recommend writing everything from scratch yourself by following the **step-by-step instructions** of each chapter.
+コード例は章ごとに利用できます。それぞれ `yarn && yarn start` または `npm install && npm start` で実行できます。各章の **ステップバイステップの指示** に従って全てゼロから入力することを推奨します。
 
-**Every chapter contains the code of previous chapters**, so if you are simply looking for a boilerplate project containing everything, just clone the last chapter and you're good to go.
 
-Note: The order of chapters is not necessarily the most educational. For instance, testing / type checking could have been done before introducing React. It is quite difficult to move chapters around or edit past ones, since I need to apply those changes to every following chapter. If things settle down, I might reorganize the whole thing in a better way.
+**すべての章には、その前の章のコードを含んでいます** 。そのため、全てを含んだプロジェクトのボイラープレートを探しているのであれば、最終章をcloneすれば入手できます。
 
-The code of this tutorial works on Linux, macOS, and Windows.
+注意: 章の順序は必ずしも最も教育的なものではありません。たとえば、テスティング/型検査はReactを導入する前に行うことできます。しかしながら、章を移動させたり以前の章を修正するのは、以降の章を全て変更する必要があるため、かなり困難です。いったん状況が落ち着いた場合、より良い方法のために配置を変更するかもしれません。
 
-## Table of contents
+このチュートリアルのコードはLinux、macOS、Windows上で動作します。
 
-[1 - Node, NPM, Yarn, and package.json](/tutorial/1-node-npm-yarn-package-json)
 
-[2 - Installing and using a package](/tutorial/2-packages)
+## 目次
 
-[3 - Setting up ES6 with Babel and Gulp](/tutorial/3-es6-babel-gulp)
+[1 - Node と NPM, Yarn, そして package.json](/tutorial/1-node-npm-yarn-package-json) （翻訳完了）
 
-[4 - Using the ES6 syntax with a class](/tutorial/4-es6-syntax-class)
+[2 - packageのインストールと使用](/tutorial/2-packages)（翻訳完了）
 
-[5 - The ES6 modules syntax](/tutorial/5-es6-modules-syntax)
+[3 - Babel と Gulp による ES6 のセットアップ](/tutorial/3-es6-babel-gulp)（翻訳完了）
+
+[4 - ES6 構文によるクラスの使い方](/tutorial/4-es6-syntax-class)（翻訳完了）
+
+[5 - ES6モジュールの構文](/tutorial/5-es6-modules-syntax)（翻訳完了）
 
 [6 - ESLint](/tutorial/6-eslint)
 
-[7 - Client app with Webpack](/tutorial/7-client-webpack)
+[7 - Webpackによるクライアントアプリ](/tutorial/7-client-webpack)
 
 [8 - React](/tutorial/8-react)
 
 [9 - Redux](/tutorial/9-redux)
 
-[10 - Immutable JS and Redux Improvements](/tutorial/10-immutable-redux-improvements)
+[10 - Immutable JS と Redux の改良](/tutorial/10-immutable-redux-improvements)
 
-[11 - Testing with Mocha, Chai, and Sinon](/tutorial/11-testing-mocha-chai-sinon)
+[11 - MochaとChai, Sinonによるテスティング](/tutorial/11-testing-mocha-chai-sinon)
 
-[12 - Type Checking with Flow](/tutorial/12-flow)
+[12 - Flowによる型検査](/tutorial/12-flow)
 
-## Coming up next
+## その先へ
 
-Production / development environments, Express, React Router, Server-Side Rendering, Styling, Enzyme, Git Hooks.
+本番 / 開発環境, Express, React Router, サーバサイドレンダリング, Styling, Enzyme, Git フックなどがあります.
 
-## Translations
+## 翻訳
 
 - [Chinese](https://github.com/pd4d10/js-stack-from-scratch) by [@pd4d10](http://github.com/pd4d10)
+- [Japanese](https://github.com/takahashim/js-stack-from-scratch) by [@takahashim](http://github.com/takahashim)
 
-If you want to add your translation, please read the [translation recommendations](/how-to-translate.md) to get started!
+翻訳を追加したい場合、[推奨翻訳方法](/how-to-translate.md)を読んでから始めてください!
 
 ## Credits
 

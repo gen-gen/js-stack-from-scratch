@@ -1,11 +1,14 @@
-# 3 - Setting up ES6 with Babel and Gulp
+# 3 - Babel と Gulp による ES6 のセットアップ
 
-We're now going to use ES6 syntax, which is a great improvement over the "old" ES5 syntax. All browsers and JS environments understand ES5 well, but not ES6. So we're going to use a tool called Babel to transform ES6 files into ES5 files. To run Babel, we are going to use Gulp, a task runner. It is similar to the tasks located under `scripts` in `package.json`, but writing your task in a JS file is simpler and clearer than a JSON file, so we'll install Gulp, and the Babel plugin for Gulp too:
+ES6構文を使ってみましょう。これは"古い"ES5構文を大幅に改善したものです。
+全てのブラウザとJS環境はES5を理解しますが、ES6は理解するとは限りません。
+そのため、Babelと呼ばれる、ES6ファイルをES5ファイルに変換するツールを使います。
+Babelを実行するには、タスクランナーのGulpを使います。`package.json`ファイルの`scripts`以下に書くタスクに似ていますが、タスクをJSファイルに書く方がJSONファイルに書くよりもシンプルで汚くなりにくいです。そのため、Gulpと、Gulp用のBabelプラグインを以下のようにインストールしましょう:
 
-- Run `yarn add --dev gulp`
-- Run `yarn add --dev gulp-babel`
-- Run `yarn add --dev babel-preset-latest`
-- In `package.json`, add a `babel` field for the babel configuration. Make it use the latest Babel preset like this:
+- `yarn add --dev gulp`と実行します
+- `yarn add --dev gulp-babel`と実行します
+- `yarn add --dev babel-preset-latest`と実行します
+- `package.json`ファイルに、babelの設定のための`babel`フィールドを追加します。最新のBabelプリセットを使うため、以下のようにします:
 
 ```json
 "babel": {
@@ -15,18 +18,18 @@ We're now going to use ES6 syntax, which is a great improvement over the "old" E
 },
 ```
 
-**Note**: A `.babelrc` file at the root of your project could also be used instead of the `babel` field of `package.json`. Your root folder will get more and more bloated over time, so keep the Babel config in `package.json` until it grows too large.
+**注意**: `.babelrc`ファイルがプロジェクトのrootフォルダにあると、そちらが`package.json`の`babel`よりも優先されます。rootフォルダはそのうちどんどん膨れ上がっていくため、`package.json`が巨大にならないうちは、Babelの設定は`package.json`内に記述するようにします。
 
-- Move your `index.js` into a new `src` folder. This is where you will write your ES6 code. A `lib` folder is where the compiled ES5 code will go. Gulp and Babel will take care of creating it. Remove the previous `color`-related code in `index.js`, and replace it with a simple:
+- `index.js`ファイルを新たな`src`フォルダに移動します。これはES6のコードを記述するためのフォルダです。`lib`フォルダはコンパイル後のES5コードが置かれます。GulpとBabelはこの生成を管理します。`index.js`にある前章の`color`関連のコードを削除し、以下の簡単な内容に書き換えます:
 
 ```javascript
 const str = 'ES6';
 console.log(`Hello ${str}`);
 ```
 
-We're using a *template string* here, which is an ES6 feature that lets us inject variables directly inside the string without concatenation using `${}`.
+ここでは *テンプレート文字列リテラル*を使っています。これはES6の新しい構文で、`${}`を使った文字列連結なしで変数を直接文字列内に埋め込むためのものです。
 
-- Create a `gulpfile.js` containing:
+- 以下の内容で`gulpfile.js`を作ります:
 
 ```javascript
 const gulp = require('gulp');
@@ -64,30 +67,35 @@ gulp.task('default', ['watch', 'main']);
 
 ```
 
-Let's take a moment to understand all this.
+全体を理解するために少し時間をとりましょう。
 
-The API of Gulp itself is pretty straightforward. It defines `gulp.task`s, that can reference `gulp.src` files, applies a chain of treatments to them with `.pipe()` (like `babel()` in our case) and outputs the new files to `gulp.dest`. It can also `gulp.watch` for changes on your filesystem. Gulp tasks can run prerequisite tasks before them, by passing an array (like `['build']`) as a second parameter to `gulp.task`. Refer to the [documentation](https://github.com/gulpjs/gulp) for a more thorough presentation.
+GulpのAPI自体は非常に率直なものです。`gulp.task`を定義し、その中では`gulp.src`でファイルを参照し、そのファイルに対し一連の操作を`.pipe()`を使って適用し(この例の`babel()`のように)、新しいファイルを`gulp.dest`に出力します。
+Gulpのタスクは、`gulp.task`の第2引数として(`['build']`のような)配列の形で渡された必要なタスクを先に実行することができます。より完全な紹介は、[ドキュメント](https://github.com/gulpjs/gulp)を参照してください。
 
-First we define a `paths` object to store all our different file paths and keep things DRY.
+まず最初に`paths`オブジェクトを定義します。これは異なるファイルパスを格納し、DRYに保つためです。
 
-Then we define 5 tasks: `build`, `clean`, `main`, `watch`, and `default`.
-
-- `build` is where Babel is called to transform all of our source files located under `src` and write the transformed ones to `lib`.
-- `clean` is a task that simply deletes our entire auto-generated `lib` folder before every `build`. This is typically useful to get rid of old compiled files after renaming or deleting some in `src`, or to make sure the `lib` folder is in sync with the `src` folder if your build fails and you don't notice. We use the `del` package to delete files in a way that integrates well with Gulp's stream (this is the [recommended](https://github.com/gulpjs/gulp/blob/master/docs/recipes/delete-files-folder.md) way to delete files with Gulp). Run `yarn add --dev del` to install that package.
-- `main` is the equivalent of running `node .` in the previous chapter, except this time, we want to run it on `lib/index.js`. Since `index.js` is the default file Node looks for, we can simply write `node lib` (we use the `libDir` variable to keep things DRY). The `require('child_process').exec` and `exec` part in the task is a native Node function that executes a shell command. We forward `stdout` to `console.log()` and return a potential error using `gulp.task`'s callback function. Don't worry if this part is not super clear to you, remember that this task is basically just running `node lib`.
-- `watch` runs the `main` task when filesystem changes happen in the specified files.
-- `default` is a special task that will be run if you simply call `gulp` from the CLI. In our case we want it to run both `watch` and `main` (for the first execution).
-
-**Note**: You might be wondering how come we're using some ES6 code in this Gulp file, since it doesn't get transpiled into ES5 by Babel. This is because we're using a version of Node that supports ES6 features out of the box (make sure you are running Node > 6.5.0 by running `node -v`).
-
-Alright! Let's see if this works.
-
-- In `package.json`, change your `start` script to: `"start": "gulp"`.
-- Run `yarn start`. It should print "Hello ES6" and start watching for changes. Try writing bad code in `src/index.js` to see Gulp automatically showing you the error when you save.
-
-- Add `/lib/` to your `.gitignore`
+続いて5のタスク: `build`, `clean`, `main`, `watch`, そして `default`を定義します。
 
 
-Next section: [4 - Using the ES6 syntax with a class](/tutorial/4-es6-syntax-class)
+- `build`は`src`以下のソースファイルを変換し`lib`に保存するため、Babelが呼ばれるところです。
+- `clean` は`build`を行う前に、`lib`フォルダに自動生成されるファイル全てを削除するタスクです。このタスクは、`src`内のファイルをリネームや削除したり、ビルドに失敗したことに気づかない場合でも`lib`フォルダを`src`フォルダに確実に同期させるため、生成されたファイルを削除するのに便利です。Gulpストリームと連携してファイルを削除するために、ここでは`del`packageを使っています(これはGulpでのファイルの削除方法として[推奨](https://github.com/gulpjs/gulp/blob/master/docs/recipes/delete-files-folder.md)されている方法です。)このpackageをインストールするには、`yarn add --dev del`と実行してください。
+- `main`は前章で`node .`と入力し実行させているのとほぼ同じもので、`lib/index.js`を実行することだけが異なっています。`index.js`はNodeが探しにいく標準のファイル名なので、単に`node lib`とだけ書いています(DRYを守るために`libDir`変数を使っています)。タスク内の`require('child_process').exec`と`exec`の部分はシェルコマンドを実行するNodeの標準関数です。`stdout`は`console.log()`に渡し、`gulp.task`のコールバック関数を使って潜在的なerrorを返します。この部分がはっきりと理解できなくても木にする必要はありません。このタクスは基本的に`node lib`を実行するためのものであるとだけ覚えてください。
+- `watch` は特定のファイルに更新があった場合に`main`タスクを実行します。
+- `default` は、コマンドラインで単に`gulp`と実行した場合に呼び出される特殊なタスクです。
 
-Back to the [previous section](/tutorial/2-packages) or the [table of contents](https://github.com/verekia/js-stack-from-scratch).
+
+**注意**: どうしてGulpファイル内でES6コードが使えるのか、気になっているかもしれません。なぜならこのコードはBabelでES5コードにトランスパイルされないからです。その理由は、ここではES6を標準でサポートしているバージョンのNodeを使っているためです(`node -v`を実行し、バージョン6.5.0以上のNodeを使っていることを確認してください)。
+
+さあ、動かしてみましょう!
+
+- `package.json`内で、`start`スクリプトを`"start": "gulp"`に変更します。
+- `yarn start`と実行します。"Hello ES6"と表示され、変更の監視が始まるはずです。 `src/index.js`に間違ったコードを書いてみて、saveしたときにGulpが自動的にエラーを表示するか試してみましょう。
+
+- `/lib/`を`.gitignore`に追加します。
+
+
+原文: [3 - Setting up ES6 with Babel and Gulp](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/3-es6-babel-gulp)
+
+次章: [ES6構文によるクラスの使い方](/tutorial/4-es6-syntax-class)
+
+[前章](/tutorial/2-packages) または [目次](https://github.com/verekia/js-stack-from-scratch)に戻る。

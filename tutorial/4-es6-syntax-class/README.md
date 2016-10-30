@@ -1,6 +1,6 @@
 # 4 - Using the ES6 syntax with a class
 
-- Create a new file, `src/dog.js`, containing the following ES6 class:
+- 新しいファイル`src/dog.js`を作り、以下のES6クラスを書きます:
 
 ```javascript
 class Dog {
@@ -16,11 +16,11 @@ class Dog {
 module.exports = Dog;
 ```
 
-It should not look surprising to you if you've done OOP in the past in any language. It's relatively recent for JavaScript though. The class is exposed to the outside world via the `module.exports` assignment.
+以前から他の言語でOOPをしたことがあるなら、特に意外な点はないでしょう。しかし、JavaScriptに取り入れられたのはつい最近なのです。このクラスは`module.exports`へ代入することにより、外の世界にさらされます。
 
-Typical ES6 code uses classes, `const` and `let`, "template strings" (with back ticks) like the one in `bark()`, and arrow functions (`(param) => { console.log('Hi'); }`), even though we're not using any in this example.
+典型的なES6コードはクラスや`const`、`let`、 `bark()`で使われているような(backtickによる)"テンプレート文字列"、アロー関数(`(param) => { console.log('Hi'); }`)などが使われます。この例では使われていないものもありますが。
 
-In `src/index.js`, write the following:
+`src/index.js`ファイルに、以下のように書きます:
 
 ```javascript
 const Dog = require('./dog');
@@ -29,13 +29,15 @@ const toby = new Dog('Toby');
 
 console.log(toby.bark());
 ```
-As you can see, unlike the community-made package `color` that we used before, when we require one of our files, we use `./` in the `require()`.
 
-- Run `yarn start` and it should print 'Wah wah, I am Toby'.
+見ての通り、先ほど使ったコミュニティで作られた`color`packageとは異なり、自分で作ったファイルをrequireするときには、`require()`内で`./`を使います。
 
-- Take a look at the code generated in `lib` to see how your compiled code looks like (`var` instead of `const` for instance).
+- `yarn start`を実行します。'Wah wah, I am Toby'と表示されるはずです。
 
+- `lib`に生成されたコードを見て、コンパイルされたコードがどのようになっているかを確認します(例えば`const`の代わりに`var`があるなど).
 
-Next section: [5 - The ES6 modules syntax](/tutorial/5-es6-modules-syntax)
+原文: [4 - Using the ES6 syntax with a class](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/4-es6-syntax-class)
 
-Back to the [previous section](/tutorial/3-es6-babel-gulp) or the [table of contents](https://github.com/verekia/js-stack-from-scratch).
+次章: [5 - ES6のモジュールの構文](/tutorial/5-es6-modules-syntax)
+
+[前章](/tutorial/3-es6-babel-gulp) または [目次](https://github.com/verekia/js-stack-from-scratch)に戻る。
