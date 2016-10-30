@@ -58,9 +58,9 @@
 
 [12 - Flowによる型検査](/tutorial/12-flow)
 
-## その先へ
+## 今後の予定
 
-本番 / 開発環境, Express, React Router, サーバサイドレンダリング, Styling, Enzyme, Git フックなどがあります.
+本番/開発環境, Express, React Router, サーバサイドレンダリング, Styling, Enzyme, Gitフック。
 
 ## 翻訳
 
