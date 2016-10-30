@@ -44,7 +44,7 @@
 
 [5 - ES6モジュールの構文](/tutorial/5-es6-modules-syntax)（翻訳完了）
 
-[6 - ESLint](/tutorial/6-eslint)
+[6 - ESLint](/tutorial/6-eslint)（翻訳完了）
 
 [7 - Webpackによるクライアントアプリ](/tutorial/7-client-webpack)
 

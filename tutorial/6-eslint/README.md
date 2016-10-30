@@ -1,12 +1,13 @@
 # 6 - ESLint
 
-We're going to lint our code to catch potential issues. ESLint is the linter of choice for ES6 code. Instead of configuring the rules we want for our code ourselves, we will use the config created by Airbnb. This config uses a few plugins, so we need to install those as well to use their config.
+潜在的な問題を見つけるため、コードをlintしましょう。ESLintはES6コード用のlinterです。ルールを自身で細かく設定する代わりに、Airbnbが作った設定を利用します。この設定はプラグインをいくつか使うため、設定を使うにはプラグインをインストールする必要があります。
 
-- Run `yarn add --dev eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react`
+- `yarn add --dev eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react` を実行します
 
-As you can see, you can install several packages in one command. It will add all of these to your `package.json`, as usual.
+この通り、複数のpackageを一つのコマンドでインストールできます。これまで通り、これらは全て`package.jsonに追加されます。
 
-In `package.json`, add an `eslintConfig` field like so:
+`package.json`に以下のような`eslintConfig`フィールドを追加します:
+
 ```json
 "eslintConfig": {
   "extends": "airbnb",
@@ -15,15 +16,16 @@ In `package.json`, add an `eslintConfig` field like so:
   ]
 },
 ```
-The `plugins` part is to tell ESLint that we use the ES6 import syntax.
 
-**Note**: An `.eslintrc.js` file at the root of your project could also be used instead of the `eslintConfig` field of `package.json`. Just like for the Babel configuration, we try to avoid bloating the root folder with too many files, but if you have a complex ESLint config, consider this alternative.
+`plugins`の部分はES6のimport構文を使うことをESLintに教えています。
 
-We'll create a Gulp task that runs ESLint for us. So we'll install the ESLint Gulp plugin as well:
+**注意**: プロジェクトのルートにある`.eslintrc.js`ファイルの代わりに、`package.json`ファイルの`eslintConfig`フィールドを使うこともできます。Babelの設定と同様、ルートフォルダが多くのファイルで溢れるのを避けるためこのようにしていますが、ESLintが複雑になっているのであれば、この代替策を検討してください。
 
-- Run `yarn add --dev gulp-eslint`
+ESLintを実行するためのGulpタスクが必要です。そのため、ESLint Gulpプラグインを次のようにインストールします。
 
-Add the following task to your `gulpfile.babel.js`:
+- `yarn add --dev gulp-eslint`を実行する
+
+次のようなタスクを`gulpfile.babel.js`に追加します:
 
 ```javascript
 import eslint from 'gulp-eslint';
@@ -47,9 +49,11 @@ gulp.task('lint', () => {
 });
 ```
 
+Gulpにこのタスクを伝えるため、`gulpfile.babel.js`と、`src`以下にあるJSファイルをインクルードする必要があります。
+
 Here we tell Gulp that for this task, we want to include `gulpfile.babel.js`, and the JS files located under `src`.
 
-Modify your `build` Gulp task by making the `lint` task a prerequisite to it, like so:
+以下のように、Gulpタスクの`build`の事前に実行するタスクに`lint`を追加します:
 
 ```javascript
 gulp.task('build', ['lint', 'clean'], () => {
@@ -57,17 +61,18 @@ gulp.task('build', ['lint', 'clean'], () => {
 });
 ```
 
-- Run `yarn start`, and you should see a bunch of linting errors in this Gulpfile, and a warning for using `console.log()` in `index.js`.
+- `yarn start`を実行すると、Gulpfile内のたくさんのlintのエラーと、`index.js`内で`console.log()`を使っている警告が表示されるはずです。
 
-One type of issue you will see is `'gulp' should be listed in the project's dependencies, not devDependencies (import/no-extraneous-dependencies)`. That's actually a false negative. ESLint cannot know which JS files are part of the build only, and which ones aren't, so we'll need to help it a little bit using comments in code. In `gulpfile.babel.js`, at the very top, add:
+
+`'gulp' should be listed in the project's dependencies, not devDependencies (import/no-extraneous-dependencies)`というタイプの警告が出ているはずです。これは実際には誤検出されたものです。ESLintはどのJSファイルがビルド時のみに使われるもので、どのJSファイルがそうではないか知ることができません。そのため、Gulpが分かるように、コメント内のコードを使って手助けをする必要があります。`gulpfile.babel.js`ファイルの先頭に、以下を追加します:
 
 ```javascript```
 /* eslint-disable import/no-extraneous-dependencies */
 ```
 
-This way, ESLint won't apply the rule `import/no-extraneous-dependencies` in this file.
+こうすることで、ESLintはこのファイルに`import/no-extraneous-dependencies`ルールを適用しなくなります。
 
-Now we are left with the issue `Unexpected block statement surrounding arrow body (arrow-body-style)`. That's a great one. ESLint is telling us that there is a better way to write the following code:
+残るissueは`Unexpected block statement surrounding arrow body (arrow-body-style)`です. これは貴重なものです。ESLintは以下のようなコードのもっと良い書き方を教えてくれているのです。
 
 ```javascript
 () => {
@@ -75,15 +80,15 @@ Now we are left with the issue `Unexpected block statement surrounding arrow bod
 }
 ```
 
-It should be rewritten into:
+これは次のように修正するべきです:
 
 ```javascript
 () => 1
 ```
 
-Because when a function only contains a return statement, you can omit the curly braces, return statement, and semicolon in ES6.
+これは関数がreturn文しか含まない場合、ブレースとreturn文とセミコロンを省略できるためです。
 
-So let's update the Gulp file accordingly:
+それではGulpファイルを正しく修正してみましょう:
 
 ```javascript
 gulp.task('lint', () =>
@@ -105,13 +110,15 @@ gulp.task('build', ['lint', 'clean'], () =>
 );
 ```
 
-The last issue warning left is about `console.log()`. Let's say that we want this `console.log()` to be valid in `index.js` instead of triggering a warning in this example. You might have guessed it, we'll put `/* eslint-disable no-console */` at the top of our `index.js` file.
+最後に残った警告は`console.log()`についてのものです。
+この例の警告の元となっている`index.js`内での`console.log()`は正しいものであることを伝えましょう。想像の通り、`/* eslint-disable no-console */`を`index.js`の先頭に置きます。
 
-- Run `yarn start` and we are now all clear again.
+- `yarn start`を実行すると、すべて解決されている状態に戻ります。
 
-**Note**: This section sets you up with ESLint in the console. It is great for catching errors at build time / before pushing, but you also probably want it integrated to your IDE. Do NOT use your IDE's native linting for ES6. Configure it so the binary it uses for linting is the one in your `node_modules` folder. This way it can use all of your project's config, the Airbnb preset, etc. Otherwise you will just get a generic ES6 linting.
+**注意**: この章ではコンソール用にESLintを設定しています。ビルド時/pushする前にエラーを見つけられるのは素晴らしいことですが、IDEにも統合したいかもしれません。
+しかし、IDEに付属しているES6用のlintツールを使わないでください。そのツールがlinting用に使っているバイナリは`node_modules`フォルダにあるように設定してください。そううするとそのツールはプロジェクトの全ての設定、Airbnbのプリセットなど全てが利用できるようになります。そうでなければ、一般的なES6のLintingしか使えるようになりません。
 
 
-Next section: [7 - Client app with Webpack](/tutorial/7-client-webpack)
+次章: [7 - Webpackによるクライアントアプリ](/tutorial/7-client-webpack)
 
-Back to the [previous section](/tutorial/5-es6-modules-syntax) or the [table of contents](https://github.com/verekia/js-stack-from-scratch).
+[前章](/tutorial/5-es6-modules-syntax) または [目次](https://github.com/verekia/js-stack-from-scratch)に戻る。
