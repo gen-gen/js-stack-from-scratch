@@ -1,8 +1,8 @@
 # 7 - Client App with Webpack
 
-## Structure of our app
+## アプリの構造
 
-- Create a `dist` folder at the root of your project, and add the following `index.html` file to it:
+- プロジェクトのルートに`dist`フォルダを作り、以下の`index.html`ファイルを追加します:
 
 ```html
 <!doctype html>
@@ -16,11 +16,11 @@
 </html>
 ```
 
-In your `src` folder, create the following subfolders: `server`, `shared`, `client`, and move your current `index.js` into `server`, and `dog.js` into `shared`. Create `app.js` in `client`.
+`src`フォルダには、次のサブフォルダを作ります: `server`, `shared`, `client`。そしてカレントの`index.js`を`server`フォルダに、`dog.js`を`shared`フォルダに移動しいます。`client`フォルダには`app.js`ファイルを作ります。
 
-We are not going to do any Node back-end yet, but this separation will help you see more clearly where things belong. You'll need to change the `import Dog from './dog';` in `server/index.js` to `import Dog from '../shared/dog';` though, or ESLint will detect errors for unresolved modules.
+Nodeバックエンドは使わないのですが、この分割はそれぞれの所属をはっきりさせるのに役立ちます。`server/index.js`内の`import Dog from './dog';`を`import Dog from '../shared/dog';`に変更する必要がありますが、ESLintは解決できないモジュールのエラーを検出してくれます。
 
-Write this in `client/app.js`:
+`client/app.js`ファイルに以下を書きます:
 
 ```javascript
 import Dog from '../shared/dog';
@@ -30,28 +30,30 @@ const browserToby = new Dog('Browser Toby');
 document.querySelector('.app').innerText = browserToby.bark();
 ```
 
-Add the following to your `package.json`, under `eslintConfig`:
+`package.json`の`eslintConfig`に以下を追加します:
 
 ```json
 "env": {
   "browser": true
 }
 ```
-This way we can use variables such as `window` or `document` which are always accessible in the browser without ESLint complaining about undeclared variables.
+こうすると、`window`や`document`といったブラウザでは必ずアクセスできる変数を使っても、ESLintは未定義変数の警告を出さないようになります。
 
-If you want to use some of the most recent ES features in your client code, like `Promise`s, you need to include the [Babel Polyfill](https://babeljs.io/docs/usage/polyfill/) in your client code.
+`Promise`など、最新のESの仕様を使いたい場合には、[Babel Polyfill](https://babeljs.io/docs/usage/polyfill/)をクライアントコードに含める必要があります。
 
-- Run `yarn add babel-polyfill`
+- `yarn add babel-polyfill`を実行する
 
-And before anything else in `app.js`, add this import:
+そして`app.js`の先頭に、importを追加します:
 
 ```javascript
 import 'babel-polyfill';
 ```
 
-Including the polyfill adds about 300KB to your bundle, so don't do this if you're not using any of the features it covers!
+このpolyfillを使うと、300KBほど膨れ上がるので、これらの機能を一切使わない場合にはimportしないようにしてください!
 
 ## Webpack
+
+Node環境では、いろんなファイルを自由に`import`しても、Nodeはファイルシステムを使って適切に解決してくれました。ブラウザにはファイルシステムが持たないため、`import`はどこからもファイルを
 
 In a Node environment, you can freely `import` different files and Node will resolve these files using your filesystem. In a browser, there is no filesystem, and therefore your `import`s point to nowhere. In order for our entry point file `app.js` to retrieve the tree of imports it needs, we are going to "bundle" that entire tree of dependencies into one file. Webpack is a tool that does this.
 
