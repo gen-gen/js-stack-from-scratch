@@ -147,11 +147,11 @@ describe('Shared', () => {
 
 - `yarn add --dev sinon sinon-chai`を実行してライブラリをインストールします。
 
-So what is new here? Well first of all, we call `chai.use(sinonChai)` to activate the Chai plugin. Then, all the magic happens in the `it()` statement: `stub(console, 'log')` is going to neutralize `console.log` and monitor it. When `new Dog('Test Toby').barkInConsole()` is executed, a `console.log` is normally supposed to happen. We test this call to `console.log` with `console.log.should.have.been.calledWith()`, and finally, we `restore` the neutralized `console.log` to make it work normally again.
+ここでの新しいことは何でしょうか？ 何よりもまず、Chaiプラグインを使うために`chai.use(sinonChai)`を呼び出しています。そして、`it()`文で全ての魔法が発動しています: `stub(console, 'log')`が`console.log`を無効化し監視します。`new Dog('Test Toby').barkInConsole()`が実行されると、新たな`console.log`が用意されます。そして`console.log`を`console.log.should.have.been.calledWith()`で呼び出してテストし、最後に`restore`で`console.log`を元に戻しています。
 
-**Important note**: Stubbing `console.log` is not recommended, because if the test fails, `console.log.restore()` is never called, and therefore `console.log` will remain broken for the rest of the command you executed in your terminal! It won't even print the error message that caused the test to fail, so it leaves you with very little information about what happened. That can be quite confusing. It is a good example to illustrate stubs in this simple app though.
+**重要な注意e**: `console.log`をスタブするのはおすすめできません。もしテストが失敗すると、`console.log.restore()`が呼び出されず、そのため`console.log`はターミナルで残りのコマンドをテストしている間中ずっと壊れてしまったままだからです! テストが失敗した時のエラーメッセージも出力できないため、何が起こっているかの情報をほとんど残すことができなくなります。これは大変厄介です。この例は単純なアプリでスタブを説明するためだけのものです。
 
-If everything went well in this chapter, you should have 2 passing tests.
+もしこの章の内容がうまくいっていれば、パスするテストが2つ得らるはずです。
 
 次章: [12 - Flowによる型検査](/tutorial/12-flow)
 
