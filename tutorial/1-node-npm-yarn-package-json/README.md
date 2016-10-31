@@ -33,6 +33,12 @@ Nodeの標準パッケージマネージャー、`npm`はNodeに付属してい�
 
 - `package.json`内の`scripts`オブジェクトに`"start": "node ."`と追加します。
 
+```
+"scripts": {
+  "start": "node ."
+}
+```
+
 `package.json`はvalidなJSONファイルでなければなりません。それはつまり、末尾のカンマを追加してはいけない、ということです。そのため、`package.json`ファイルを手で編集する際にはよく注意してください。
 
 - `yarn start`と実行します。`Hello world`と表示されるはずです。 

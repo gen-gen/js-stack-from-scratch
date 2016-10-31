@@ -110,8 +110,7 @@ gulp.task('build', ['lint', 'clean'], () =>
 );
 ```
 
-最後に残った警告は`console.log()`についてのものです。
-この例の警告の元となっている`index.js`内での`console.log()`は正しいものであることを伝えましょう。想像の通り、`/* eslint-disable no-console */`を`index.js`の先頭に置きます。
+最後に残った問題は`console.log()`についてのものです。この例で問題の元となっている`index.js`内での`console.log()`は正しいものであることを伝えましょう。想像の通り、`/* eslint-disable no-console */`を`index.js`の先頭に置きます。
 
 - `yarn start`を実行すると、すべて解決されている状態に戻ります。
 
