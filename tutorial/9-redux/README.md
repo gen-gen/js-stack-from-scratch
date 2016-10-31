@@ -9,7 +9,7 @@ Reduxの分かりやすい動くデモが<a href="http://slides.com/jenyaterpil/
 Reduxを可能な限りシンプルに扱うにはどうすればよいか説明するため、アプリはメッセージとボタンで構成されるようにします。
 メッセージは犬が鳴いているかどうか（最初は鳴いていません）を伝え、ボタンを押すと犬が鳴き、メッセージが更新されるようにします。
 
-ここでは、`redux`と`react-redux`の2つのpackageが必要になります。
+ここでは、`redux`と`react-redux`の2つのパッケージが必要になります。
 
 - `yarn add redux react-redux`を実行します。
 

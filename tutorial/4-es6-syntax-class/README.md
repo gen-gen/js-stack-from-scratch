@@ -30,7 +30,7 @@ const toby = new Dog('Toby');
 console.log(toby.bark());
 ```
 
-見ての通り、先ほど使ったコミュニティで作られた`color`packageとは異なり、自分で作ったファイルをrequireするときには、`require()`内で`./`を使います。
+見ての通り、先ほど使ったコミュニティで作られた`color`パッケージとは異なり、自分で作ったファイルをrequireするときには、`require()`内で`./`を使います。
 
 - `yarn start`を実行します。'Wah wah, I am Toby'と表示されるはずです。
 

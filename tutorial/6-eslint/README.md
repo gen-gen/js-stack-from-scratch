@@ -4,7 +4,7 @@
 
 - `yarn add --dev eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react` を実行します
 
-この通り、複数のpackageを一つのコマンドでインストールできます。これまで通り、これらは全て`package.jsonに追加されます。
+この通り、複数のパッケージを一つのコマンドでインストールできます。これまで通り、これらは全て`package.jsonに追加されます。
 
 `package.json`に以下のような`eslintConfig`フィールドを追加します:
 

@@ -6,7 +6,7 @@
 
 - `yarn add react react-dom`を実行します
 
-この2つのpackageは`"dependencies"`と`"devDependencies"`とに追加されます。ビルドツールと異なり、クライアントバンドルは本番環境用でも使われるためです。
+この2つのパッケージは`"dependencies"`と`"devDependencies"`とに追加されます。ビルドツールと異なり、クライアントバンドルは本番環境用でも使われるためです。
 
 `src/client/app.js`を`src/client/app.jsx`にリネームし、ReactとJSXのコードを書いてみましょう:
 

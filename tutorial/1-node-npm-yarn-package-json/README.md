@@ -41,7 +41,7 @@ Nodeの標準パッケージマネージャー、`npm`はNodeに付属してい�
 
 `package.json`はvalidなJSONファイルでなければなりません。それはつまり、末尾のカンマを追加してはいけない、ということです。そのため、`package.json`ファイルを手で編集する際にはよく注意してください。
 
-- `yarn start`と実行します。`Hello world`と表示されるはずです。 
+- `yarn start`と実行します。`Hello world`と表示されるはずです。
 
 - `.gitignore`を作り、以下の内容を追加します。
 
@@ -54,6 +54,6 @@ yarn-error.log
 
 原文: [1 - Node, NPM, Yarn, and package.json](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/1-node-npm-yarn-package-json)
 
-次章: [2 - packageのインストールと使用](/tutorial/2-packages)
+次章: [2 - パッケージのインストールと使用](/tutorial/2-packages)
 
 [目次](https://github.com/verekia/js-stack-from-scratch)に戻る

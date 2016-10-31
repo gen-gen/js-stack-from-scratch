@@ -38,7 +38,7 @@
 
 [1 - Node と NPM, Yarn, そして package.json](/tutorial/1-node-npm-yarn-package-json) （翻訳完了）
 
-[2 - packageのインストールと使用](/tutorial/2-packages)（翻訳完了）
+[2 - パッケージのインストールと使用](/tutorial/2-packages)（翻訳完了）
 
 [3 - Babel と Gulp による ES6 のセットアップ](/tutorial/3-es6-babel-gulp)（翻訳完了）
 
