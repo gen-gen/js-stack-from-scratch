@@ -1,4 +1,4 @@
-# ゼロから始めるJavaScriptスタック
+# ゼロから始めるJavaScript生活
 
 [![Yarn](/img/yarn.png)](https://yarnpkg.com/)
 [![React](/img/react.png)](https://facebook.github.io/react/)
@@ -12,10 +12,10 @@
 
 [![Build Status](https://travis-ci.org/verekia/js-stack-from-scratch.svg?branch=master)](https://travis-ci.org/verekia/js-stack-from-scratch)
 
-モダンJavaScriptスタックチュートリアル、**ゼロから始めるJavaScriptスタック** へようこそ。
+モダンJavaScriptスタックチュートリアル、**ゼロから始めるJavaScript生活** へようこそ。
 
 これはJavaScriptスタックを使い始めるための最短最速のガイドです。**ES6, Babel, Gulp, ESLint, React, Redux, Webpack, Immutable, Mocha, Chai, Sinon, Flow** のセットアップ方法をお伝えします。
-このガイドは一般的なプログラミングの知識とJavaScriptの基礎を前提としています。これら全てのツールを一緒につなぎ合わせることにフォーカスしており、各ツールについて**可能な限りシンプルな例**を提供します。このチュートリアルは、独自のボイラープレートを一から準備するための方法として見ることもできます。
+このガイドは一般的なプログラミングの知識とJavaScriptの基礎を前提としています。これら全てのツールを一緒につなぎ合わせることにフォーカスしており、各ツールについて**可能な限りシンプルな例**を提供します。このチュートリアルは、独自のボイラープレートをゼロから準備するための方法として見ることもできます。
 
 このチュートリアルの目標はさまざまなツールを組み立てることにあるため、これらのツールの仕組みについて、それぞれの詳細については触れません。
 それらのより深い知識を習得したい場合、それぞれのドキュメントを参照するか、他のチュートリアルを探してください。
