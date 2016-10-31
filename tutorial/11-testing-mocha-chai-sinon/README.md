@@ -1,16 +1,16 @@
 # 11 - Testing with Mocha, Chai, and Sinon
 
-## Mocha and Chai
+## MochaとChai
 
-- Create an `src/test` folder. This folder will mirror our application folder structure, so create a `src/test/client` folder as well (feel free to add `server` and `shared` if you want, but we're not going to write tests for these).
+- `src/test`フォルダを作ります。このフォルダはアプリケーションのフォルダ構造を反映していて、`src/test/client`フォルダも同様に作ります(`server`フォルダと`shared`フォルダも必要なら作っても構わないのですが、ここではテストを書きません)。
 
-- In `src/test/client`, create a `state-test.js` file, which we are going to use to test our Redux application life cycle.
+- `src/test/client`フォルダ内に`state-test.js`ファイルを作ります。これはReduxアプリケーションのライフサイクルをテストするのに使われます。
 
-We are going to use [Mocha](http://mochajs.org/) as our main testing framework. Mocha is easy to use, has tons of features, and is currently the [most popular JavaScript testing framework](http://stateofjs.com/2016/testing/). It is very flexible and modular. In particular, it lets you use any assertion library you want. [Chai](http://chaijs.com/) is a great assertion library that has a lot of [plugins](http://chaijs.com/plugins/) available and lets you choose between different assertion styles.
+メインのテスティングフレームワークには、[Mocha](http://mochajs.org/)を使うことにします。Mochaは使いやすく、機能が豊富で、今のところ[最もよく使われるJavaScriptのテスティングフレームワーク](http://stateofjs.com/2016/testing/)です。また、フレキシブルでモジュラー化されています。特に、好きなアサーションライブラリを使うことができます。[Chai](http://chaijs.com/)は、たくさんの[plugin](http://chaijs.com/plugins/)を持つ素晴らしいアサーションライブラリで、異なるアサーションスタイルを選ぶことができます。
 
-- Let's install Mocha and Chai by running `yarn add --dev mocha chai`
+- `yarn add --dev mocha chai`を実行して、MochaとChaiをインストールします。
 
-In `state-test.js`, write the following:
+`state-test.js`を以下のように書きます:
 
 ```javascript
 /* eslint-disable import/no-extraneous-dependencies, no-unused-expressions */
@@ -42,17 +42,22 @@ describe('App State', () => {
   });
 });
 ```
-Alright, let's analyze this whole thing.
 
-First, notice how we import the `should` assertion style from `chai`. This lets us assert things using a syntax like `mynumber.should.equal(3)`, pretty neat. In order to be able to call `should` on any object, we need to run the function `should()` before anything. Some of these assertion are *expressions*, like `mybook.should.be.true`, which will make ESLint grumpy, so we've added an ESLint comment at the top to disable the `no-unused-expressions` rule in this file.
+さて、この全体を解析してみましょう。
+
+まず、`chai`の`should`アサーションスタイルをどのようにimportしているのかを注意してみてください。これを使うと`mynumber.should.equal(3)`といった、ちょっと巧妙な構文を使ってアサートできるようになります。どんなオブジェクトに対しても`should`を呼び出せるように、何よりも前に`should()`を実行しなければなりません。これらのアサーションには、 `mybook.should.be.true`のように*式(expressions)*であるものがあり、ESLintはこのような書き方に警告を出します。そのため、ファイルの先頭に`no-unused-expressions`ルールを無効にするESLintのコメントを追加しています。
+
+Mochaのテストは木構造のような階層構造で動作します。ここでは、アプリケーションの状態の`dog`属性に影響する`makeBark`関数をテストしたいので、テストの階層は`describe()`で表現した通り、`App State > Dog > makeBark`という形になります。`it()`が実際のテスト関数で、`beforeEach()`は`it()`の各テストの前に実行される関数になります。
+この例では、各テストが走る前に新しい状態が必要です。
+そこで、ファイルの先頭で変数`store`を宣言し、このファイル内での全てのテストで使えるようにしています。
 
 Mocha tests work like a tree. In our case, we want to test the `makeBark` function which should affect the `dog` attribute of the application state, so it makes sense to use the following hierarchy of tests: `App State > Dog > makeBark`, that we declare using `describe()`. `it()` is the actual test function and `beforeEach()` is a function that is executed before each `it()` test. In our case, we want a fresh new store before running each test. We declare a `store` variable at the top of the file because it should be useful in every test of this file.
 
-Our `makeBark` test is very explicit, and the description provided as a string in `it()` makes it even clearer: we test that `hasBarked` go from `false` to `true` after calling `makeBark`.
+`makeBark`テストは明示的に書かれていますが、`it()`内に文字列で与えられている説明によってさらにわかりやすくなっています: ここでは`makeBark`の呼び出しによって`hasBarked`が`false`から`true`に変わるのをテストしています。
 
-Alright, let's run this test!
+さあ、テストを実行してみましょう！
 
-- Create the following `test` task, which relies on the `gulp-mocha` plugin:
+- `gulp-mocha`プラグインを使って、以下の`test`タスクを作ります:
 
 ```javascript
 import mocha from 'gulp-mocha';
@@ -70,23 +75,27 @@ gulp.task('test', ['build'], () =>
 );
 ```
 
-- Run `yarn add --dev gulp-mocha` of course.
+- もちろん、`yarn add --dev gulp-mocha`で実行します。
 
-As you can see, tests are run on transpiled code in `lib`, which is why `build` is a prerequisite task of `test`. `build` also has a prerequisite, `lint`, and finally, we are making `test` a prerequisite of `main`, which gives us the following task cascade for the `default` task: `lint` > `build` > `test` > `main`.
+見ての通り、テストは`lib`にトランスパイルされたコードを実行します。これが`test`が`build`の前提条件になっている理由です。
+`build`も`lint`という前提条件を持っており、そして最後に、`test`が`main`の前提条件になります。これにより、`default`は次のようなタスクの連鎖ができます: `lint` > `build` > `test` > `main`。
 
-- Change the prerequisite of `main` to `test`:
+- `main`の前提条件を`test`に変えます:
 
 ```javascript
 gulp.task('main', ['test'], () => /* ... */ );
 ```
 
-- In `package.json`, replace the current `"test"` script by: `"test": "gulp test"`. This way you can use `yarn test` to just run your tests. `test` is also the standard script that will be automatically called by tools like continuous integration services for instance, so you should always bind your test task to it. `yarn start` will run the tests before building the Webpack client bundle as well, so it will only build it if all tests pass.
+- `package.json`の`"test"`スクリプトを`"test": "gulp test"`に変更します。こうすると`yarn test`でテストを実行できるようになります。
+`test`は例えばCIサービスのようなツールで自動的に呼ばれる標準のスクリプトでもあるため、必ずテストタスクはここに書くべきです。
+`yarn start`はWebpackのクライアントバンドルを作る前にテストを実行するため、全てのテストにパスすればビルドするだけになります。
+This way you can use `yarn test` to just run your tests. `test` is also the standard script that will be automatically called by tools like continuous integration services for instance, so you should always bind your test task to it. `yarn start` will run the tests before building the Webpack client bundle as well, so it will only build it if all tests pass.
 
-- Run `yarn test` or `yarn start`, and it should print the result for our test, hopefully green.
+- `yarn test`または`yarn start`を実行すると、テスト結果が出力されます。おそらくグリーンになっているはずです。
 
 ## Sinon
 
-In some cases, we want to be able to *fake* things in a unit test. For instance, let's say we have a function, `deleteEverything`, which contains a call to `deleteDatabases()`. Running `deleteDatabases()` causes a lot of side-effects, which we absolutely don't want to happen when running our test suite.
+ユニットテストで*fake*を使いたくなることがあります。たとえば、`deleteDatabases()`という関数の呼び出しを含む`deleteEverything`という関数があったとします。`deleteDatabases()`の実行には様々な副作用があるため、テストスイートを走らせる際には実行したくありません。
 
 [Sinon](http://sinonjs.org/) is a testing library that offers **Stubs** (and a lot of other things), which allow us to neutralize `deleteDatabases` and simply monitor it without actually calling it. This way we can test if it got called, or which parameters it got called with for instance. This is typically very useful to fake or avoid AJAX calls - which can cause side-effects on the back-end.
 
