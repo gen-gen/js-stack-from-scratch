@@ -1,16 +1,21 @@
 # 9 - Redux
 
-In this chapter (which is the most difficult so far) we will be adding [Redux](http://redux.js.org/) to our application and will hook it up with React. Redux manages the state of your application. It is composed of a **store** which is a plain JavaScript object representing the state of your app, **actions** which are typically triggered by users, and **reducers** which can be seen as action handlers. Reducers affect your application state (the *store*), and when the application state is modified, things happen in your app. A good visual demonstration of Redux can be found <a href="http://slides.com/jenyaterpil/redux-from-twitter-hype-to-production#/9">here</a>.
+本章では(おそらくここまでで最も難しい章なのですが)、アプリケーションに[Redux](http://redux.js.org/)を追加し、Reactと連携させます。
+Reduxはアプリケーションの状態を管理するもので、アプリの状態を表現する素のJavaScriptオブジェクトである**store**、一般的にユーザが起点となる**action**、アクションハンドラにも見える**reducer**が合わさったものです。
+reducerはアプリケーションの状態(*store*)に影響を及ぼし、アプリケーションの状態が変更がされると、アプリケーションに何かが起こります。
+Reduxの分かりやすい動くデモが<a href="http://slides.com/jenyaterpil/redux-from-twitter-hype-to-production#/9">ここ</a>にあります。
 
-In order to demonstrate how to use Redux in the simplest possible way, our app will consist of a message and a button. The message says whether the dog has barked or not (it initially hasn't), and the button makes the dog bark, which should update the message.
 
-We are going to need 2 packages in this part, `redux` and `react-redux`.
+Reduxを可能な限りシンプルに扱うにはどうすればよいか説明するため、アプリはメッセージとボタンで構成されるようにします。
+メッセージは犬が鳴いているかどうか（最初は鳴いていません）を伝え、ボタンを押すと犬が鳴き、メッセージが更新されるようにします。
 
-- Run `yarn add redux react-redux`.
+ここでは、`redux`と`react-redux`の2つのpackageが必要になります。
 
-Lets start by creating 2 folders: `src/client/actions` and `src/client/reducers`.
+- `yarn add redux react-redux`を実行します。
 
-- In `actions`, create `dog-actions.js`:
+2つのフォルダ、`src/client/actions`と`src/client/reducers`を作るところからはじめます。
+
+- `actions`内に、以下の`dog-actions.js`ファイルを作ります:
 
 ```javascript
 export const MAKE_BARK = 'MAKE_BARK';
@@ -20,9 +25,11 @@ export const makeBark = () => ({
   payload: true,
 });
 ```
-Here we define an action type, `MAKE_BARK`, and a function (also known as *action creator*) that triggers a `MAKE_BARK` action called `makeBark`. Both are exported because we'll need them both in other files. This action implements the [Flux Standard Action](https://github.com/acdlite/flux-standard-action) model, which is why it has `type` and `payload` attributes.
 
-- In `reducers`, create `dog-reducer.js`:
+ここではアクションタイプ`MAKE_BARK`を定義しています。また、`MAKE_BARK`アクションのトリガーとなる関数(これは*action creator*とも言います)`makeBark`も定義します。
+どちらも他のファイルから利用するため、exportされています。このアクションは[Flux Standard Action](https://github.com/acdlite/flux-standard-action)モデルで実装されています。これは`type`属性と`payload`属性を持っているのはそのせいです。
+
+- `reducers`フォルダに以下のような`dog-reducer.js`ファイルを作ります:
 
 ```javascript
 import { MAKE_BARK } from '../actions/dog-actions';
@@ -43,9 +50,12 @@ const dogReducer = (state = initialState, action) => {
 export default dogReducer;
 ```
 
-Here we define the initial state of our app, which is an object containing the `hasBarked` property set to `false`, and the `dogReducer`, which is the function responsible for altering the state based on which action happened. The state cannot be modified in this function, a brand new state object must be returned.
 
-- We are now going to modify `app.jsx` to create the *store*. You can replace the entire content of that file by the following:
+`dogReducer`プロパティが
+
+ここではアプリの初期状態として、`hasBarked`プロパティが`false`になっている状態を定義しています。また、どのアクションが実行されたかによって状態を作る関数`dogReducer`も定義しています。この関数は状態を変更することがありません。代わりに新しい状態オブジェクトを返します。
+
+- *store*を作るため`app.jsx`を修正します。ファイルの中身全体を以下の内容に置き換えます:
 
 ```javascript
 import React from 'react';
@@ -71,19 +81,19 @@ ReactDOM.render(
 );
 ```
 
-Our store is created by the Redux function `createStore`, pretty explicit. The store object is assembled by combining all our reducers (in our case, only one) using Redux's `combineReducers` function. Each reducer is named here, and we'll name ours `dog`.
+見ての通り、Reduxの関数`createStore`がstoreを作ります。
+storeオブジェクトはReduxの`combineReducers`関数を使って、reducerを全て(この例では1つだけですが)集めたものです。
+各reducerはここで名前がつけられます。ここでは`dog`という名前をつけています。
+ここは純粋なReduxの部分です。
 
-That's pretty much it for the pure Redux part.
+それでは`react-redux`を使ってReduxとReactを結びつけましょう。`react-redux`がReactアプリにstoreを渡せるようにするため、アプリ全体を`<Provider>`コンポーネントで包みます。このコンポーネントは1つだけしか子要素を持てません。そのためここでは`<div>`要素を作り、この`<div>`要素にアプリの2つの重要な要素である`BarkMessage`と`BarkButton`を持たせるようにします。
 
-Now we are going to hook up Redux with React using `react-redux`. In order for `react-redux` to pass the store to our React app, it needs to wrap the entire app in a `<Provider>` component. This component must have a single child, so we created a `<div>`, and this `<div>` contains the 2 main elements of our app, a `BarkMessage` and a `BarkButton`.
+`import`セクションにあった通り、`BarkMessage`と`BarkButton`は`containers`フォルダからimportしたものです。**Components** と **Containers**という２つのコンセプトを紹介するよい機会です。
+*Component* は *賢くない(dumb)* Reactコンポーネントです。これはReduxの状態について何も知らないという意味です。*Containers* は *賢い(smart)*なコンポーネントです。これは状態を知っており、他の賢くないコンポーネントに*接続(connect)*できるためです。
 
-As you can tell in the `import` section, `BarkMessage` and `BarkButton` are imported from a `containers` folder. Now is a good time to introduce the concept of **Components** and **Containers**.
+- `src/client/components`と`src/client/containers`の2つのフォルダを作ります。
 
-*Components* are *dumb* React components, in a sense that they don't know anything about the Redux state. *Containers* are *smart* components that know about the state and that we are going to *connect* to our dumb components.
-
-- Create 2 folders, `src/client/components` and `src/client/containers`.
-
-- In `components`, create the following files:
+- `components`の中に、以下のファイルを作ります:
 
 **button.jsx**
 
@@ -100,7 +110,7 @@ Button.propTypes = {
 export default Button;
 ```
 
-and **message.jsx**:
+そして、**message.jsx**:
 
 ```javascript
 import React, { PropTypes } from 'react';
@@ -115,11 +125,11 @@ export default Message;
 
 ```
 
-These are examples of *dumb* components. They are logic-less, and just show whatever they are asked to show via React **props**. The main difference between `button.jsx` and `message.jsx` is that `Button` contains an **action** in its props. That action is bound on the `onClick` event. In the context of our app, the `Button` label is never going to change, however, the `Message` component is going to reflect the state of our app, and will vary based on the state.
+これらは*賢くない*コンポーネントの例です。ロジックがなく、Reactの**props**経由で問い合わせが来たものをそのまま返すだけのものです。`button.jsx` と `message.jsx` の主な違いは、`Button`はそのプロパティとして**アクション(action)** を持っていることです。アクションは`onClick`イベントに結び付けられています。アプリのコンテキストで、`Button`ラベルは変化することがありませんが、`Message`コンポーネントはアプリの状態を反映し、状態によって変化します。
 
-Again, *components* don't know anything about Redux **actions** or the **state** of our app, which is why we are going to create smart **containers** that will feed the proper *actions* and *data* to these 2 dumb components.
+繰り返しますが、 *コンポーネント* はReduxの **アクション** やアプリの**状態** について何も知りません。そのため、適切な*actions* と *data*を2つの賢くないコンポーネントに伝えるための賢い**コンテナ**を作ることになるのです。
 
-- In `containers`, create the following files:
+- `containers`内に、以下のファイルを作ります:
 
 **bark-button.js**
 
@@ -136,7 +146,7 @@ const mapDispatchToProps = dispatch => ({
 export default connect(null, mapDispatchToProps)(Button);
 ```
 
-and **bark-message.js**:
+そして **bark-message.js**:
 
 ```javascript
 import { connect } from 'react-redux';
@@ -149,10 +159,13 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps)(Message);
 ```
 
-`BarkButton` will hook up `Button` with the `makeBark` action and Redux's `dispatch` method, and `BarkMessage` will hook up the app state with `Message`. When the state changes, `Message` will now automatically re-render with the proper `message` prop. These connections are done via the `connect` function of `react-redux`.
+`BarkButton`は`Button`と`makeBark`アクション、そしてReduxの`dispatch`メソッドを結びつけます。
+また、`BarkMessage`はアプリケーションの状態と`Message`を結びつけます。
+状態が変更されると、`Message`は自動的に適切な`message`属性を再描画します。
+これらは`react-redux`の`connect`関数によって動作します。
 
-- You can now run `yarn start` and open `index.html`. You should see "The dog did not bark" and a button. When you click the button, the message should show "The dog barked".
+- `yarn start`を実行し、`index.html`を開きます。そうすると、"The dog did not bark"とボタンが表示されます。ボタンをクリックすると、"The dog barked"というメッセージが表示されるはずです。
 
-Next section: [10 - Immutable JS and Redux Improvements](/tutorial/10-immutable-redux-improvements)
+次章 : [10 - Immutable JS と Redux の改良](/tutorial/10-immutable-redux-improvements)
 
-Back to the [previous section](/tutorial/8-react) or the [table of contents](https://github.com/verekia/js-stack-from-scratch).
+[前章](/tutorial/8-react) または [目次](https://github.com/verekia/js-stack-from-scratch) に戻る。

@@ -1,4 +1,4 @@
-# 4 - Using the ES6 syntax with a class
+# 4 - ES6のクラス構文を使う
 
 - 新しいファイル`src/dog.js`を作り、以下のES6クラスを書きます:
 

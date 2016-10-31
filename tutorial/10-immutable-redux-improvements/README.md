@@ -1,26 +1,28 @@
-# 10 - Immutable JS and Redux Improvements
+# 10 - Immutable JS と Redux の改良
 
 ## Immutable JS
 
-Unlike the previous chapter, this one is rather easy, and consists in minor improvements.
+前章とは違い、本章はとても簡単で、ちょっとした変更を行うだけです。
 
-First, we are going to add **Immutable JS** to our codebase. Immutable is a library to manipulate objects without mutating them. Instead of doing:
+まず、コードベースに**Immutable JS**を追加します。Immutableはオブジェクトを変更(mutating)することなしに扱うためのライブラリです。例えば以下のようにする代わりに:
 
 ```javascript
 const obj = { a: 1 };
 obj.a = 2; // Mutates `obj`
 ```
-You would do:
+
+こうすることができます:
+
 ```javascript
 const obj = Immutable.Map({ a: 1 });
 obj.set('a', 2); // Returns a new object without mutating `obj`
 ```
 
-This approach follows the **functional programming** paradigm, which works really well with Redux. Your reducer functions actually *have* to be pure functions that don't alter the state passed as parameter, but return a brand new state object instead. Let's use Immutable to enforce this.
+このアプローチは**関数型プログラミング**のパラダイムに則ったもので、Reduxとの相性がとても良くなっています。実際、reducer関数は引数として渡される状態を変更しない、純粋な関数でなければならず、状態オブジェクトを新しく作って返すようになっています。それではImmutableを使い、このやり方を強制してみましょう。
 
-- Run `yarn add immutable`
+- `yarn add immutable`を実行します。
 
-We are going to use `Map` in our codebase, but ESLint and the Airbnb config will complain about using a capitalized name without it being a class. Add the following to your `package.json` under `eslintConfig`:
+このコードベースでは`Map`を使うのですが、ESLintとAirbnbの設定はクラス以外に大文字の名前を使うと警告を出します。`package.json`の`eslintConfig`に以下を追加します:
 
 ```json
 "rules": {
@@ -35,11 +37,11 @@ We are going to use `Map` in our codebase, but ESLint and the Airbnb config will
   ]
 }
 ```
-This makes `Map` and `List` (the 2 Immutable objects you'll use all the time) exceptions to that ESLint rule. This verbose JSON formatting is actually done automatically by Yarn/NPM, so we cannot make it more compact unfortunately.
+これは`Map`と`List`(この2つのImmutableなオブジェクトはずっと使うことになります)を例外扱いするようESLintルールを変更するものです。この冗長なJSONフォーマットはYarn/NPMによって自動的に行われるもので、残念ながら簡潔にはできません。
 
-Anyway, back to Immutable:
+それはさておき、Immutableに戻りましょう:
 
-In `dog-reducer.js` tweak your file so it looks like this:
+`dog-reducer.js`を以下のように修正します:
 
 ```javascript
 import Immutable from 'immutable';
@@ -61,9 +63,9 @@ const dogReducer = (state = initialState, action) => {
 export default dogReducer;
 ```
 
-The initial state is now built using an Immutable Map, and the new state is generated using `set()`, preventing any mutation of the previous state.
+初期状態はImmutableのMapを使って作られます。そして新しい状態は、それ以前の状態を変更することのない`set()`を使って作られるようになります。
 
-In `containers/bark-message.js`, update the `mapStateToProps` function to use `.get('hasBarked')` instead of `.hasBarked`:
+`containers/bark-message.js`の`mapStateToProps`関数を、`.hasBarked`の代わりに`.get('hasBarked')`を使うよう修正します:
 
 ```javascript
 const mapStateToProps = state => ({
@@ -71,20 +73,22 @@ const mapStateToProps = state => ({
 });
 ```
 
-The app should still behave exactly the way it did before.
+アプリケーションは以前と同様の振る舞いをするはずです。
 
-**Note**: If Babel complains about Immutable exceeding 100KB, add `"compact": false` to your `package.json` under `babel`.
+**注意**: BabelがImmutableについて100KB制限を超えていると警告する場合, `package.json`の`babel`のところに`"compact": false`を追加します。
 
-As you can see from the code snippet above, our state object still contains a plain old `dog` object attribute, which isn't immutable. It is fine this way, but if you want to only manipulate immutable objects, you could install the `redux-immutable` package to replace Redux's `combineReducers` function.
+上記のコード片を見ると分かる通り、状態オブジェクトはイミュータブルではない、素のJavaScriptオブジェクトである`dog`オブジェクトを属性として持っています。
+これはこれで構わないのですが、イミュータブルオブジェクトしか扱いたくない場合、Reduxの`combineReducers`関数を置き換えるため、`redux-immutable`パッケージをインストールできます。
 
-**Optional**:
-- Run `yarn add redux-immutable`
-- Replace your `combineReducers` function in `app.jsx` to use the one imported from `redux-immutable` instead.
-- In `bark-message.js` replace `state.dog.get('hasBarked')` by `state.getIn(['dog', 'hasBarked'])`.
+**オプション**:
 
-## Redux Actions
+- `yarn add redux-immutable`を実行します。
+- `app.jsx`にある`combineReducers`関数を`redux-immutable`からimportしたものに置き換えます。
+- `bark-message.js`の`state.getIn(['dog', 'hasBarked'])`を`state.dog.get('hasBarked')`に置き換えます。
 
-As you add more and more actions to your app, you will find yourself writing quite a lot of the same boilerplate. The `redux-actions` package helps reducing that boilerplate code. With `redux-actions` you can rewrite your `dog-actions.js` file in a more compact way:
+## Reduxアクション
+
+アプリにアクションを加えていくにつれて、同じボイラープレートを何度も書き加えていくことになります。`redux-actions`パッケージを使えば、ボイラープレートのコードを減らしてくれます。`dog-actions.js`ファイルを`redux-actions`で簡潔に書き換えることができます。
 
 ```javascript
 import { createAction } from 'redux-actions';
@@ -93,10 +97,10 @@ export const MAKE_BARK = 'MAKE_BARK';
 export const makeBark = createAction(MAKE_BARK, () => true);
 ```
 
-`redux-actions` implement the [Flux Standard Action](https://github.com/acdlite/flux-standard-action) model, just like the action we previously wrote, so integrating `redux-actions` is seamless if you follow this model.
+`redux-actions`は先ほど実装したようなアクションである[Flux Standard Action](https://github.com/acdlite/flux-standard-action)モデルを実装したもので、このモデルに従っていれば`redux-actions`はシームレスに導入できます。
 
-- Don't forget to run `yarn add redux-actions`.
+- `yarn add redux-actions`を忘れずに実行します。
 
-Next section: [11 - Testing with Mocha, Chai, and Sinon](/tutorial/11-testing-mocha-chai-sinon)
+次章: [11 - MochaとChai, Sinonによるテスティング](/tutorial/11-testing-mocha-chai-sinon)
 
-Back to the [previous section](/tutorial/9-redux) or the [table of contents](https://github.com/verekia/js-stack-from-scratch).
+[前章](/tutorial/9-redux) または [目次](https://github.com/verekia/js-stack-from-scratch)に戻る。

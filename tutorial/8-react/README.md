@@ -1,14 +1,14 @@
 # 8 - React
 
-We're now going to render our app using React.
+アプリの表示にReactを使ってみましょう。
 
-First, let's install React and ReactDOM:
+まず、 ReactとReactDOMをインストールします:
 
-- Run `yarn add react react-dom`
+- `yarn add react react-dom`を実行します
 
-These 2 packages go to our `"dependencies"` and not `"devDependencies"` because unlike build tools, the client bundle needs them in production.
+この2つのpackageは`"dependencies"`と`"devDependencies"`とに追加されます。ビルドツールと異なり、クライアントバンドルは本番環境用でも使われるためです。
 
-Let's rename our `src/client/app.js` file into `src/client/app.jsx` and write some React and JSX code in it:
+`src/client/app.js`を`src/client/app.jsx`にリネームし、ReactとJSXのコードを書いてみましょう:
 
 ```javascript
 import 'babel-polyfill';
@@ -32,17 +32,15 @@ App.propTypes = {
 ReactDOM.render(<App message={dogBark} />, document.querySelector('.app'));
 ```
 
-**Note**: If you are unfamiliar with React or its PropTypes, learn about React first and come back to this tutorial later. There is going to be quite some React things in the upcoming chapters, so you need a good understanding of it.
+**注意**: もしReactとそのPropTypesをよく知らないのであれば、まずReactについて学習してからこのチュートリアルに戻ってきてください。後の章ではReactが多用されるため、よく理解しておく必要があります。
 
-In your Gulpfile, change the value of `clientEntryPoint` to give it a `.jsx` extension:
+Gulpfile内の`clientEntryPoint`の値に`.jsx`拡張子を追加します:
 
 ```javascript
 clientEntryPoint: 'src/client/app.jsx',
 ```
 
-Since we use the JSX syntax here, we have to tell Babel that it needs to transform it as well.
-Install the React Babel preset, which will teach Babel how to process the JSX syntax:
-`yarn add --dev babel-preset-react` and change the `babel` entry in your `package.json` file like so:
+ここではJSXの構文を使うため、BabelにJSXを変換するよう伝える必要があります。BabelにJSX構文の処理方法を教えるReact用のBabelプリセットをインストールします: `yarn add --dev babel-preset-react` そして`package.json`ファイルの`babel`エントリを次のように変更します:
 
 ```json
 "babel": {
@@ -53,9 +51,9 @@ Install the React Babel preset, which will teach Babel how to process the JSX sy
 },
 ```
 
-Now after running `yarn start`, if we open `index.html`, we should see "The dog says: Wah wah, I am Browser Toby" rendered by React.
+これで`yarn start`実行後、`index.html`を開くとReactが"The dog says: Wah wah, I am Browser Toby"と出力するのを確認できるはずです。
 
 
-Next section: [9 - Redux](/tutorial/9-redux)
+次章: [9 - Redux](/tutorial/9-redux)
 
-Back to the [previous section](/tutorial/7-client-webpack) or the [table of contents](https://github.com/verekia/js-stack-from-scratch).
+[前章](/tutorial/7-client-webpack)または[目次](https://github.com/verekia/js-stack-from-scratch)に戻る。

@@ -53,15 +53,17 @@ import 'babel-polyfill';
 
 ## Webpack
 
-Node環境では、いろんなファイルを自由に`import`しても、Nodeはファイルシステムを使って適切に解決してくれました。ブラウザにはファイルシステムが持たないため、`import`はどこからもファイルを
+Node環境では、いろんなファイルを自由に`import`しても、Nodeはファイルシステムを使って適切に解決してくれました。ブラウザにはファイルシステムが持たないため、`import`もファイルを参照することができません。エントリポイントのファイルである`app.js`が必要なインポートの連関を探してこれるようになるため、
+「バンドル」
 
 In a Node environment, you can freely `import` different files and Node will resolve these files using your filesystem. In a browser, there is no filesystem, and therefore your `import`s point to nowhere. In order for our entry point file `app.js` to retrieve the tree of imports it needs, we are going to "bundle" that entire tree of dependencies into one file. Webpack is a tool that does this.
 
-Webpack uses a config file, just like Gulp, called `webpack.config.js`. It is possible to use ES6 imports and exports in it, in the exact same way that we made Gulp rely on Babel to do so: by naming this file `webpack.config.babel.js`.
 
-- Create an empty `webpack.config.babel.js` file
+WebpackはGulpのように、`webpack.config.js`という設定ファイルを使用します。GulpがBabelを利用していたのと全く同じように、ES6のimportとexportが使えるようにできます。そのためには、`webpack.config.babel.js`という名前のファイルを使います。
 
-- While you're at it, add `webpack.config.babel.js` to your Gulp `lint` task, and a few more `paths` constants:
+- 空のファイル`webpack.config.babel.js`を作ります
+
+- Gulpの`link`タスクに`webpack.config.babel.js`を、`paths`定数にいくつかパスを追加します。
 
 ```javascript
 const paths = {
@@ -86,11 +88,11 @@ gulp.task('lint', () =>
 );
 ```
 
-We need to teach Webpack how to process ES6 files via Babel (just like we taught Gulp how to process ES6 files with `gulp-babel`). In Webpack, when you need to process files that are not plain old JavaScript, you use *loaders*. So let's install the Babel loader for Webpack:
+WebpackにBabelを使ってES6ファイルを扱う方法を教える必要があります(GulpにES6ファイルの扱いを教えるために`gulp-babel`を使ったのと同様です)。Webpackでは、素の古いJavaScriptではないものを扱う場合、*loaders*を使います。Webpack用のBabel loaderをインストールしてみましょう。
 
-- Run `yarn add --dev babel-loader`
+- `yarn add --dev babel-loader`を実行します
 
-- Write the following to your `webpack.config.babel.js` file:
+- `webpack.config.babel.js`ファイルに以下を書きます:
 
 ```javascript
 export default {
@@ -113,38 +115,41 @@ export default {
 };
 ```
 
-Let's analyze this a bit:
+これを解読してみます:
 
-We need this file to `export` stuff for Webpack to read. `output.filename` is the name of the bundle we want to generate. `devtool: 'source-map'` will enable source maps for a better debugging experience in your browser. In `module.loaders`, we have a `test`, which is the JavaScript regex that will be used to test which files should be processed by the `babel-loader`. Since we will use both `.js` files and `.jsx` files (for React) in the next chapters, we have the following regex: `/\.jsx?$/`. The `node_modules` folder is excluded because there is no transpilation to do there. This way, when your code `import`s packages located in `node_modules`, Babel doesn't bother processing those files, which reduces build time. The `resolve` part is to tell Webpack what kind of file we want to be able to `import` in our code using extension-less paths like `import Foo from './foo'` where `foo` could be `foo.js` or `foo.jsx` for instance.
+このファイルはWebpackが読めるように`export`する必要があります。`output.filename`が生成したいバンドルのファイル名です。`devtool: 'source-map'`はブラウザでのデバッグが捗るようにするためのソースマップを有効にします。`module.loaders`には`test`があります。これは`babel-loader`がどんなファイルを扱うかテストするかを正規表現で指定しています。次章では`.js`ファイルと(React用の)`.jsx`ファイルの両方を扱うため、`/\.jsx?$/`という正規表現を使っています。`node_modules`フォルダはトランスパイルを行わないため、excludeで排除しています。`resolve`の部分では、拡張子なしで`import`した場合、どのような種類のファイルを`import`するべきかをWebpackに指定しています。これは例えば`import Foo from './foo'`と書くと、`foo`のところは`foo.js`や`foo.jsx`と解釈されるようにするためのものです。
 
-Okay so now we have Webpack set up, but we still need a way to *run* it.
+さて、Webpackの設定は終わりましたが、*実行*するにはもうちょっとかかります。
 
-## Integrating Webpack to Gulp
+## WebpackをGulpに統合する
 
-Webpack can do a lot of things. It can actually replace Gulp entirely if your project is mostly client-side. Gulp being a more general tool, it is better suited for things like linting, tests, and back-end tasks though. It is also simpler to understand for newcomers than a complex Webpack config. We have a pretty solid Gulp setup and workflow here, so integrating Webpack to our Gulp build is going to be easy peasy.
+Webpackはさまざまなことを行います。プロジェクトがクライアントサイドのものであれば、Gulpをすっかり置き換えてしまうこともできます。
+一方で、Gulpはもっと汎用的なツールで、linting、テスト、バックエンドタスクなどに向いています。
+初学者の人にとっては、Webpackの複雑な設定よりもシンプルで理解しやすいでしょう。
+ここではすでにGulpのセットアップとワークフローを構築済みなので、WebpackをGulpのビルドに統合させるのが理想的でしょう。
 
-Let's create the Gulp task to run Webpack. Open your `gulpfile.babel.js`.
+それではWebpackを実行するGulpタスクを作りましょう。`gulpfile.babel.js`を開きます。
 
-We don't need the `main` task to execute `node lib/` anymore, since we will open `index.html` to run our app.
+`node lib/`を実行する`main`タスクはもう必要ありません。`index.html`を開けばアプリが実行されるためす。
 
-- Remove `import { exec } from 'child_process'`.
+- `import { exec } from 'child_process'`を削除します
 
-Similarly to Gulp plugins, the `webpack-stream` package lets us integrate Webpack into Gulp very easily.
+Gulpプラグイン同様、`webpack-stream` packageを使えば、GulpにWebpackに統合するのも簡単です。
 
-- Install the package with: `yarn add --dev webpack-stream`
+-  `yarn add --dev webpack-stream`を実行し、packageをインストールします
 
-- Add the following `import`s:
+- 以下の`import`を追加します:
 
 ```javascript
 import webpack from 'webpack-stream';
 import webpackConfig from './webpack.config.babel';
 ```
 
-The second line just grabs our config file.
+2行目で設定ファイルを取り込んでいます。
 
-Like I said earlier, in the next chapter we are going to use `.jsx` files (on the client, and even on the server later on), so let's set that up right now to have a bit of a head start.
+先ほど触れたとおり、次章では`.jsx`ファイルを使います(まず使うのはクライアント側でですが、サーバ側でも後ほど使用します)。ちょっと早いですがさっそく設定しておきましょう。
 
-- Change the constants to the following:
+- constの定数宣言を次のようにします:
 
 ```javascript
 const paths = {
@@ -159,11 +164,11 @@ const paths = {
 };
 ```
 
-The `.js?(x)` is just a pattern to match `.js` or `.jsx` files.
+`.js?(x)`は`.js`ファイルと`.jsx`ファイルにマッチするパターンです。
 
-We now have constants for the different parts of our application, and an entry point file.
+アプリケーションの別の部分についてと、エントリポイントのファイルが定数に追加されました。
 
-- Modify the `main` task like so:
+- `main`を次のように変更します:
 
 ```javascript
 gulp.task('main', ['lint', 'clean'], () =>
@@ -173,13 +178,13 @@ gulp.task('main', ['lint', 'clean'], () =>
 );
 ```
 
-**Note**: Our `build` task currently transpiles ES6 code to ES5 for every `.js` file located under `src`. Now that we've split our code into `server`, `shared`, and `client` code, we could make this task only compile `server` and `shared` (since Webpack takes care of `client`). However, in the Testing chapter, we are going to need Gulp to also compile the `client` code to test it outside of Webpack. So until you reach that chapter, there is a bit of useless duplicated build being done. I'm sure we can all agree that it's fine for now. We actually aren't even going to be using the `build` task and `lib` folder anymore until that chapter, since all we care about right now is the client bundle.
+**注意**: `build`タスクは現状、`src`以下にある全ての`.js`ファイルをES6からES5にトランスパイルします。ここではコードを`server`と`shared`、`client`に分割しています。これは`server`と`shared`のみこのタスクでコンパイルするためのものです(`client`はWebpackが担当するたｍです)。しかしながら、テスティングの章では、Webpackの外でテストするため`client`のコードもGulpでコンパイルする必要があります。そのため、その章にたどり着くまで、不要な重複ビルドが行われることになります。今のところはこれでも良いと同意してもらえると思います。実際には、今ここで扱うのはクライアントバンドルのみなので、`build`タスクも`lib`フォルダもその章までは特に使う必要がないものです。
 
-- Run `yarn start`, you should now see Webpack building your `client-bundle.js` file. Opening `index.html` in your browser should display "Wah wah, I am Browser Toby".
+- `yarn start`を実行すると、Webpackが`client-bundle.js`ファイルを作ります。`index.html`をブラウザで開くと"Wah wah, I am Browser Toby"と表示されるはずです。
 
-One last thing: unlike our `lib` folder, the `dist/client-bundle.js` and `dist/client-bundle.js.map` files are not being cleaned up by our `clean` task before each build.
+最後に: `lib`フォルダとは異なり、`dist/client-bundle.js`ファイルと`dist/client-bundle.js.map`ファイルはビルドの度に`clean`タスクで消されません。
 
-- Add `clientBundle: 'dist/client-bundle.js?(.map)'` to our `paths` configuration, and tweak the `clean` task like so:
+- `clientBundle: 'dist/client-bundle.js?(.map)'`を`paths`の設定に追加し、`clean`タスクを以下のように変更します:
 
 ```javascript
 gulp.task('clean', () => del([
@@ -188,8 +193,8 @@ gulp.task('clean', () => del([
 ]));
 ```
 
-- Add `/dist/client-bundle.js*` to your `.gitignore` file:
+- `/dist/client-bundle.js*`を`.gitignore`ファイルに追加します。
 
-Next section: [8 - React](/tutorial/8-react)
+次章: [8 - React](/tutorial/8-react)
 
-Back to the [previous section](/tutorial/6-eslint) or the [table of contents](https://github.com/verekia/js-stack-from-scratch).
+[前章](/tutorial/6-eslint)または[目次](https://github.com/verekia/js-stack-from-scratch)に戻る。
