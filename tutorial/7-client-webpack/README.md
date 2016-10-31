@@ -49,7 +49,7 @@ document.querySelector('.app').innerText = browserToby.bark();
 import 'babel-polyfill';
 ```
 
-このpolyfillを使うと、300KBほど膨れ上がるので、これらの機能を一切使わない場合にはimportしないようにしてください!
+このpolyfillを使うと、バンドルのサイズが増えるため、これらの機能を使いたい場合のみ追加するようにします。このチュートリアルでは無駄のないボイラープレートのコードを提供するために、このpolyfillを導入し、次章以降のコードサンプルで使っていきます。
 
 ## Webpack
 
