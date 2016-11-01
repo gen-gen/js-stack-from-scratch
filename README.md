@@ -36,11 +36,11 @@
 
 ## 目次
 
-[1 - Node と NPM, Yarn, そして package.json](/tutorial/1-node-npm-yarn-package-json)
+[1 - NodeとNPM、Yarn、そしてpackage.json](/tutorial/1-node-npm-yarn-package-json)
 
 [2 - パッケージのインストールと使用](/tutorial/2-packages)
 
-[3 - Babel と Gulp による ES6 のセットアップ](/tutorial/3-es6-babel-gulp)
+[3 - BabelとGulpによるES6のセットアップ](/tutorial/3-es6-babel-gulp)
 
 [4 - ES6のクラス構文を使う](/tutorial/4-es6-syntax-class)
 
@@ -54,9 +54,9 @@
 
 [9 - Redux](/tutorial/9-redux)
 
-[10 - Immutable JS と Redux の改良](/tutorial/10-immutable-redux-improvements)
+[10 - Immutable JSとReduxの改良](/tutorial/10-immutable-redux-improvements)
 
-[11 - MochaとChai, Sinonによるテスティング](/tutorial/11-testing-mocha-chai-sinon)
+[11 - MochaとChai、Sinonによるテスティング](/tutorial/11-testing-mocha-chai-sinon)
 
 [12 - Flowによる型検査](/tutorial/12-flow)
 

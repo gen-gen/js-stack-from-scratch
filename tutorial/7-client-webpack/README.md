@@ -1,4 +1,4 @@
-# 7 - Client App with Webpack
+# 7 - Webpackによるクライアントアプリ
 
 ## アプリの構造
 

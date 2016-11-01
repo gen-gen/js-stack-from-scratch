@@ -1,4 +1,4 @@
-# 10 - Immutable JS と Redux の改良
+# 10 - Immutable JSとReduxの改良
 
 ## Immutable JS
 
