@@ -73,7 +73,7 @@ gulp.task('test', ['build'], () =>
 
 - もちろん、`yarn add --dev gulp-mocha`で実行します。
 
-見ての通り、テストは`lib`にトランスパイルされたコードを実行します。これが`test`が`build`の前提条件になっている理由です。`build`も`lint`という前提条件を持っており、そして最後に、`test`が`main`の前提条件になります。これにより、`default`は次のようなタスクの連鎖ができます: `lint` > `build` > `test` > `main`。
+このように、テストは`lib`にトランスパイルされたコードを実行します。これが`test`が`build`の前提条件になっている理由です。`build`も`lint`という前提条件を持っており、そして最後に、`test`が`main`の前提条件になります。これにより、`default`は次のようなタスクの連鎖ができます: `lint` > `build` > `test` > `main`。
 
 - `main`の前提条件を`test`に変えます:
 

@@ -81,7 +81,7 @@ ReactDOM.render(
 );
 ```
 
-見ての通り、Reduxの関数`createStore`がstoreを作ります。
+このように、Reduxの関数`createStore`がstoreを作ります。
 storeオブジェクトはReduxの`combineReducers`関数を使って、reducerを全て(この例では1つだけですが)集めたものです。
 各reducerはここで名前がつけられます。ここでは`dog`という名前をつけています。
 ここは純粋なReduxの部分です。
