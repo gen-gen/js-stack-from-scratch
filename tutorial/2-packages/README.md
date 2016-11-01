@@ -30,4 +30,4 @@
 
 次章: [3 - Setting up ES6 with Babel and Gulp](/tutorial/3-es6-babel-gulp)
 
-[前章](/tutorial/1-node-npm-yarn-package-json) または [目次](https://github.com/verekia/js-stack-from-scratch)に戻る
+[前章](/tutorial/1-node-npm-yarn-package-json)または[目次](https://github.com/verekia/js-stack-from-scratch)に戻る

@@ -1,8 +1,8 @@
 # 8 - React
 
-アプリの表示にReactを使ってみましょう。
+アプリの描画にReactを使ってみましょう。
 
-まず、 ReactとReactDOMをインストールします:
+まず、ReactとReactDOMをインストールします:
 
 - `yarn add react react-dom`を実行します
 
@@ -51,8 +51,9 @@ clientEntryPoint: 'src/client/app.jsx',
 },
 ```
 
-これで`yarn start`実行後、`index.html`を開くとReactが"The dog says: Wah wah, I am Browser Toby"と出力するのを確認できるはずです。
+これで`yarn start`実行後、`index.html`を開くと、Reactが"The dog says: Wah wah, I am Browser Toby"と出力するのを確認できるはずです。
 
+原文: [8 - React](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/8-react)
 
 次章: [9 - Redux](/tutorial/9-redux)
 

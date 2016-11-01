@@ -40,4 +40,4 @@ console.log(toby.bark());
 
 次章: [5 - ES6のモジュールの構文](/tutorial/5-es6-modules-syntax)
 
-[前章](/tutorial/3-es6-babel-gulp) または [目次](https://github.com/verekia/js-stack-from-scratch)に戻る。
+[前章](/tutorial/3-es6-babel-gulp)または[目次](https://github.com/verekia/js-stack-from-scratch)に戻る。

@@ -44,7 +44,7 @@
 
 [4 - ES6のクラス構文を使う](/tutorial/4-es6-syntax-class)
 
-[5 - ES6モジュールの構文](/tutorial/5-es6-modules-syntax)
+[5 - ES6モジュール構文](/tutorial/5-es6-modules-syntax)
 
 [6 - ESLint](/tutorial/6-eslint)
 

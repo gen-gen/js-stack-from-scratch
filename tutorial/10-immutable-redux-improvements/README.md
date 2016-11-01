@@ -37,7 +37,7 @@ obj.set('a', 2); // Returns a new object without mutating `obj`
   ]
 }
 ```
-これは`Map`と`List`(この2つのImmutableなオブジェクトはずっと使うことになります)を例外扱いするようESLintルールを変更するものです。この冗長なJSONフォーマットはYarn/NPMによって自動的に行われるもので、残念ながら簡潔にはできません。
+これは`Map`と`List`(この2つのImmutableなオブジェクトはずっと使うことになります)を例外扱いするようESLintルールを変更するものです。この冗長なJSONフォーマットはYarn/NPMによって自動的に行われるもので、残念ながらコンパクトにはできません。
 
 それはさておき、Immutableに戻りましょう:
 
@@ -77,8 +77,7 @@ const mapStateToProps = state => ({
 
 **注意**: BabelがImmutableについて100KB制限を超えていると警告する場合, `package.json`の`babel`のところに`"compact": false`を追加します。
 
-上記のコード片を見ると分かる通り、状態オブジェクトはイミュータブルではない、素のJavaScriptオブジェクトである`dog`オブジェクトを属性として持っています。
-これはこれで構わないのですが、イミュータブルオブジェクトしか扱いたくない場合、Reduxの`combineReducers`関数を置き換えるため、`redux-immutable`パッケージをインストールできます。
+上記のコード片を見ると分かる通り、状態オブジェクトはイミュータブルではない、素のJavaScriptオブジェクトである`dog`オブジェクトを属性として持っています。これはこれで構わないのですが、イミュータブルオブジェクトしか扱いたくない場合、Reduxの`combineReducers`関数を置き換えるため、`redux-immutable`パッケージをインストールできます。
 
 **オプション**:
 
@@ -101,6 +100,8 @@ export const makeBark = createAction(MAKE_BARK, () => true);
 
 - `yarn add redux-actions`を忘れずに実行します。
 
-次章: [11 - MochaとChai, Sinonによるテスティング](/tutorial/11-testing-mocha-chai-sinon)
+原文: [10 - Immutable JS and Redux Improvements](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/10-immutable-redux-improvements)
+
+次章: [11 - Mocha、Chai、Sinonによるテスティング](/tutorial/11-testing-mocha-chai-sinon)
 
 [前章](/tutorial/9-redux) または [目次](https://github.com/verekia/js-stack-from-scratch)に戻る。

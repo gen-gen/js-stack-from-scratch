@@ -151,7 +151,9 @@ describe('Shared', () => {
 
 **重要な注意**: `console.log`をスタブするのはおすすめできません。もしテストが失敗すると、`console.log.restore()`が呼び出されず、そのため`console.log`はターミナルで残りのコマンドをテストしている間中ずっと壊れてしまったままだからです! テストが失敗した時のエラーメッセージも出力できないため、何が起こっているかの情報をほとんど残すことができなくなります。これは大変厄介です。この例は単純なアプリでスタブを説明するためだけのものです。
 
-もしこの章の内容がうまくいっていれば、パスするテストが2つ得らるはずです。
+もしこの章の内容がうまくいっていれば、パスするテストが2つ得られるはずです。
+
+原文: [11 - Testing with Mocha, Chai, and Sinon](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/11-testing-mocha-chai-sinon)
 
 次章: [12 - Flowによる型検査](/tutorial/12-flow)
 
