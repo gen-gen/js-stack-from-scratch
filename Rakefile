@@ -8,7 +8,7 @@ HEADER_COMMENT = <<-EOB
 EOB
 
 TOC = <<-EOB
-[1 - Node と NPM, Yarn, そして package.json](#1---nodenpmyarnそしてpackagejson)
+[1 - Node、NPM、Yarn、そして package.json](#1---nodenpmyarnそしてpackagejson)
 
 [2 - packageのインストールと使用](#2---パッケージのインストールと利用)
 
@@ -16,7 +16,7 @@ TOC = <<-EOB
 
 [4 - ES6のクラス構文を使う](#4---es6のクラス構文を使う)
 
-[5 - ES6モジュールの構文](#5---es6モジュールの構文)
+[5 - ES6モジュール構文](#5---es6モジュール構文)
 
 [6 - ESLint](#6---eslint)
 
@@ -28,7 +28,7 @@ TOC = <<-EOB
 
 [10 - Immutable JS と Redux の改良](#10---immutable-jsとreduxの改良)
 
-[11 - MochaとChai, Sinonによるテスティング](#11---mochachaisinonによるテスティング)
+[11 - Mocha、Chai、Sinonによるテスティング](#11---mochachaisinonによるテスティング)
 
 [12 - Flowによる型検査](#12---flow)
 
@@ -41,6 +41,7 @@ EOB
 def preface
   readme0 = File.read("README.md")
   readme0.gsub!(/(## 目次\n).*(## 今後の予定\n)/m){ $1 + TOC + $2 }
+  readme0.gsub!(/(## 翻訳\n).*(## Credits\n)/m){ $2 }
   readme0.gsub!(%r{\[!\[Yarn\].*\(https://travis-ci.org/verekia/js-stack-from-scratch\)\n}m){ IMAGES }
   HEADER_COMMENT + readme0
 end
