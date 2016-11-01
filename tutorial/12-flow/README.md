@@ -101,6 +101,7 @@ Immutableがこの件を公式に解決するまで、Immutableコンポーネ�
 
 .*/node_modules/gulp-flowtype/.*
 ```
+
 この場合、`node_modules/gulp-flowtype`ディレクトリにあるAtomの`linter-flow`プラグインに型エラーが検出されました。これは`// @flow`がついたファイルを同梱していました。
 
 これでlintされて、型検査もテストも通った万全のコードができました!
