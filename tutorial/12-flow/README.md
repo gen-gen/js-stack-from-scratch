@@ -96,6 +96,7 @@ import * as Immutable from 'immutable';
 Immutableがこの件を公式に解決するまで、Immutableコンポーネントをimportする時はどちらか好きな方を使いましょう。個人的には`import * as Immutable from 'immutable'`の方が、短い上に修正された際のリファクタリングも不要なので気に入っています。
 
 **注意**: Flowが型エラーを`node_modules`フォルダで見つけた場合、問題のあるパッケージを無視するため`[ignore]`セクションを`.flowconfig`に追加します(`node_modules`ディレクトリ全体を無視しないようにします)。以下のようになります:
+
 ```
 [ignore]
 
