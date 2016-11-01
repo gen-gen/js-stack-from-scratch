@@ -36,25 +36,25 @@
 
 ## 目次
 
-[1 - Node と NPM, Yarn, そして package.json](/tutorial/1-node-npm-yarn-package-json) （翻訳完了）
+[1 - Node と NPM, Yarn, そして package.json](/tutorial/1-node-npm-yarn-package-json)
 
-[2 - パッケージのインストールと使用](/tutorial/2-packages)（翻訳完了）
+[2 - パッケージのインストールと使用](/tutorial/2-packages)
 
-[3 - Babel と Gulp による ES6 のセットアップ](/tutorial/3-es6-babel-gulp)（翻訳完了）
+[3 - Babel と Gulp による ES6 のセットアップ](/tutorial/3-es6-babel-gulp)
 
-[4 - ES6のクラス構文を使う](/tutorial/4-es6-syntax-class)（翻訳完了）
+[4 - ES6のクラス構文を使う](/tutorial/4-es6-syntax-class)
 
-[5 - ES6モジュールの構文](/tutorial/5-es6-modules-syntax)（翻訳完了）
+[5 - ES6モジュールの構文](/tutorial/5-es6-modules-syntax)
 
-[6 - ESLint](/tutorial/6-eslint)（翻訳完了）
+[6 - ESLint](/tutorial/6-eslint)
 
-[7 - Webpackによるクライアントアプリ](/tutorial/7-client-webpack)（翻訳完了）
+[7 - Webpackによるクライアントアプリ](/tutorial/7-client-webpack)
 
-[8 - React](/tutorial/8-react)（翻訳完了）
+[8 - React](/tutorial/8-react)
 
-[9 - Redux](/tutorial/9-redux)（翻訳完了）
+[9 - Redux](/tutorial/9-redux)
 
-[10 - Immutable JS と Redux の改良](/tutorial/10-immutable-redux-improvements)（翻訳完了）
+[10 - Immutable JS と Redux の改良](/tutorial/10-immutable-redux-improvements)
 
 [11 - MochaとChai, Sinonによるテスティング](/tutorial/11-testing-mocha-chai-sinon)
 
