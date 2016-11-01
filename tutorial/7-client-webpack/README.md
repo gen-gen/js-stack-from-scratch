@@ -53,11 +53,7 @@ import 'babel-polyfill';
 
 ## Webpack
 
-Node環境では、いろんなファイルを自由に`import`しても、Nodeはファイルシステムを使って適切に解決してくれました。ブラウザにはファイルシステムが持たないため、`import`もファイルを参照することができません。エントリポイントのファイルである`app.js`が必要なインポートの連関を探してこれるようになるため、
-「バンドル」
-
-In a Node environment, you can freely `import` different files and Node will resolve these files using your filesystem. In a browser, there is no filesystem, and therefore your `import`s point to nowhere. In order for our entry point file `app.js` to retrieve the tree of imports it needs, we are going to "bundle" that entire tree of dependencies into one file. Webpack is a tool that does this.
-
+Node環境では、いろんなファイルを自由に`import`しても、Nodeはファイルシステムを使って適切に解決してくれました。ブラウザにはファイルシステムが持たないため、`import`もファイルを参照することができません。エントリポイントのファイルである`app.js`が必要なインポートのツリー構造を探してこれるよう、依存関係のツリー全体を1つのファイルに「バンドル」しなければなりません。Webpackはこのためのツールです。
 
 WebpackはGulpのように、`webpack.config.js`という設定ファイルを使用します。GulpがBabelを利用していたのと全く同じように、ES6のimportとexportが使えるようにできます。そのためには、`webpack.config.babel.js`という名前のファイルを使います。
 
