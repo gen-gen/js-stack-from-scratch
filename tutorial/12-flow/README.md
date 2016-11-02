@@ -83,7 +83,7 @@ export default Dog;
 const Message = ({ message }: { message: string }) => <div>{message}</div>;
 ```
 
-このように、関数のパラメタのプロパティを展開している場合、オブジェクトリテラル記法の一種を使って展開されたプロパティにアノテーションをつけます。
+このように、分割代入している場合、オブジェクトリテラル記法のようなものを使って展開されたプロパティにアノテーションをつけます。
 
 他に見かける例としては、`src/client/reducers/dog-reducer.js`にあるように、FlowはImmutableがデフォルトのexportをつけないと注意してくるというものがあります。この問題は[Immutableの#863](https://github.com/facebook/immutable-js/issues/863)で議論されていますが、2つの回避策があります:
 
