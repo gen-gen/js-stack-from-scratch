@@ -42,7 +42,7 @@ def preface
   readme0 = File.read("README.md")
   readme0.gsub!(/(## 目次\n).*(## 今後の予定\n)/m){ $1 + TOC + $2 }
   readme0.gsub!(/(## 翻訳\n).*(## Credits\n)/m){ $2 }
-  readme0.gsub!(%r{\[!\[Yarn\].*\(https://travis-ci.org/verekia/js-stack-from-scratch\)\n}m){ IMAGES }
+  readme0.gsub!(%r{\[!\[Build Status\].*\(https://flowtype.org/\)\n}m){ IMAGES }
   HEADER_COMMENT + readme0
 end
 
