@@ -3,7 +3,7 @@ require 'rake/clean'
 
 CONCAT_FILE = "all.md"
 HEADER_COMMENT = <<-EOB
-（訳者注: これは、[JavaScript Stack from Scratch](https://github.com/verekia/js-stack-from-scratch)を翻訳し、まとめて読めるように1ファイルにまとめたものです。まとめる前の翻訳と各種ファイルについては、https://github.com/takahashim/js-stack-from-scratch にあるので、こちらを参照してください。）
+（訳者注: これは、[JavaScript Stack from Scratch](https://github.com/verekia/js-stack-from-scratch)を翻訳し、まとめて読めるように1ファイルにしたものです。元の翻訳と各種ファイルについては、https://github.com/takahashim/js-stack-from-scratch にあるので、こちらを参照してください。）
 
 EOB
 
