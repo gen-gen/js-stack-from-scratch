@@ -1,6 +1,6 @@
 # 1 - Node、NPM、Yarn、そしてpackage.json
 
-このセクションではNode、NPM、Yarn、そして基本的な`package.json`ファイルのセットアップを行います.
+この章ではNode、NPM、Yarn、そして基本的な`package.json`ファイルのセットアップを行います.
 
 まず、バックエンドのJavaScriptとして使われるだけではなく、モダンなフロントエンドスタックを構築するためのツールとしても使われる、Nodeをインストールする必要があります。
 

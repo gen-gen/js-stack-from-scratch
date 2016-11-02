@@ -41,7 +41,7 @@ document.querySelector('.app').innerText = browserToby.bark();
 
 さらに、`Promise`など、最新のESの仕様を使いたい場合には、[Babel Polyfill](https://babeljs.io/docs/usage/polyfill/)をクライアントコードに含める必要があります。
 
-- `yarn add babel-polyfill`を実行する
+- `yarn add babel-polyfill`を実行します
 
 そして`app.js`の先頭に、次のようなimportを追加します:
 
@@ -53,7 +53,7 @@ import 'babel-polyfill';
 
 ## Webpack
 
-Node環境では、いろんなファイルを自由に`import`しても、Nodeはファイルシステムを使って適切に解決してくれました。ブラウザにはファイルシステムが持たないため、`import`もファイルを参照することができません。エントリポイントのファイルである`app.js`が必要なインポートのツリー構造を探してこれるよう、依存関係のツリー全体を1つのファイルに「バンドル」しなければなりません。Webpackはこのためのツールです。
+Node環境では、いろんなファイルを自由に`import`しても、Nodeはファイルシステムを使って適切に解決してくれました。一方ブラウザでは、ファイルシステムがないため、`import`もファイルを参照することができません。エントリポイントのファイルである`app.js`が必要なインポートのツリー構造を探してこれるよう、依存関係のツリー全体を1つのファイルに「バンドル」しなければなりません。このためのツールがWebpackです。
 
 WebpackはGulp同様、`webpack.config.js`という設定ファイルを使用します。GulpはBabelを利用してES6のimportとexportを使えるようにしていましたが、Webpackも同様のことができます。そのためには、`webpack.config.babel.js`という名前のファイルを使います。
 
