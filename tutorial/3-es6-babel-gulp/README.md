@@ -5,6 +5,7 @@ ES6構文を使ってみましょう。ES6構文は「古い」ES5構文を大�
 - `yarn add --dev gulp`と実行します
 - `yarn add --dev gulp-babel`と実行します
 - `yarn add --dev babel-preset-latest`と実行します
+- `yarn add --dev del`と実行します (これは後述の通り、`clean`タスクのためです)
 - `package.json`ファイルに、babelの設定のための`babel`フィールドを追加します。最新のBabelプリセットを使うため、以下のようにします:
 
 ```json
@@ -73,11 +74,10 @@ GulpのAPI自体は非常に率直なものです。`gulp.task`を定義し、�
 続いて5つのタスク: `build`、`clean`、`main`、`watch`、そして`default`を定義します。
 
 - `build`は`src`以下のソースファイルを変換し`lib`に保存するため、Babelが呼ばれるところです。
-- `clean` は`build`を行う前に、`lib`フォルダに自動生成されるファイル全てを削除するタスクです。このタスクは、`src`内のファイルをリネームや削除したり、ビルドに失敗したことに気づかない場合でも`lib`フォルダを`src`フォルダに確実に同期させるため、生成されたファイルを削除するのに便利です。Gulpストリームと連携してファイルを削除するために、ここでは`del`パッケージを使っています(これはGulpでのファイルの削除方法として[推奨](https://github.com/gulpjs/gulp/blob/master/docs/recipes/delete-files-folder.md)されている方法です。)このパッケージをインストールするには、`yarn add --dev del`と実行してください。
+- `clean` は`build`を行う前に、`lib`フォルダに自動生成されるファイル全てを削除するタスクです。このタスクは、`src`内のファイルをリネームや削除したり、ビルドに失敗したことに気づかない場合でも`lib`フォルダを`src`フォルダに確実に同期させるため、生成されたファイルを削除するのに便利です。Gulpストリームと連携してファイルを削除するために、ここでは`del`パッケージを使っています(これはGulpでのファイルの削除方法として[推奨](https://github.com/gulpjs/gulp/blob/master/docs/recipes/delete-files-folder.md)されている方法です)。
 - `main`は前章で`node .`と入力し実行させているのとほぼ同じもので、`lib/index.js`を実行することだけが異なっています。`index.js`はNodeが探しにいく標準のファイル名なので、単に`node lib`とだけ書いています(DRYを守るために`libDir`変数を使っています)。タスク内の`require('child_process').exec`と`exec`の部分はシェルコマンドを実行するNodeの標準関数です。`stdout`は`console.log()`に渡し、`gulp.task`のコールバック関数を使って潜在的なerrorを返します。この部分がはっきりと理解できなくても木にする必要はありません。このタクスは基本的に`node lib`を実行するためのものであるとだけ覚えてください。
 - `watch` は特定のファイルに更新があった場合に`main`タスクを実行します。
 - `default` は、コマンドラインで単に`gulp`と実行した場合に呼び出される特殊なタスクです。
-
 
 **注意**: どうしてGulpファイル内でES6コードが使えるのか、気になっているかもしれません。なぜならこのコードはBabelでES5コードにトランスパイルされないからです。その理由は、ここではES6を標準でサポートしているバージョンのNodeを使っているためです(`node -v`を実行し、バージョン6.5.0以上のNodeを使っていることを確認してください)。
 

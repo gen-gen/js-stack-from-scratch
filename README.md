@@ -1,5 +1,7 @@
 # ゼロから始めるJavaScript生活
 
+[![Build Status](https://travis-ci.org/verekia/js-stack-from-scratch.svg?branch=master)](https://travis-ci.org/verekia/js-stack-from-scratch) [![Join the chat at https://gitter.im/js-stack-from-scratch/Lobby](https://badges.gitter.im/js-stack-from-scratch/Lobby.svg)](https://gitter.im/js-stack-from-scratch/Lobby)
+
 [![Yarn](/img/yarn.png)](https://yarnpkg.com/)
 [![React](/img/react.png)](https://facebook.github.io/react/)
 [![Gulp](/img/gulp.png)](http://gulpjs.com/)
@@ -9,8 +11,6 @@
 [![Mocha](/img/mocha.png)](https://mochajs.org/)
 [![Chai](/img/chai.png)](http://chaijs.com/)
 [![Flow](/img/flow.png)](https://flowtype.org/)
-
-[![Build Status](https://travis-ci.org/verekia/js-stack-from-scratch.svg?branch=master)](https://travis-ci.org/verekia/js-stack-from-scratch)
 
 モダンJavaScriptスタックチュートリアル、**ゼロから始めるJavaScript生活** へようこそ。
 
