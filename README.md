@@ -66,11 +66,11 @@
 
 ## 翻訳
 
-- [Chinese](https://github.com/pd4d10/js-stack-from-scratch) by [@pd4d10](http://github.com/pd4d10)
-- [Italian](https://github.com/fbertone/js-stack-from-scratch) by [Fabrizio Bertone](https://github.com/fbertone)
+- [中文](https://github.com/pd4d10/js-stack-from-scratch) by [@pd4d10](http://github.com/pd4d10)
+- [Italiano](https://github.com/fbertone/js-stack-from-scratch) by [Fabrizio Bertone](https://github.com/fbertone)
 - [Japanese](https://github.com/takahashim/js-stack-from-scratch) by [@takahashim](http://github.com/takahashim)
 
-翻訳を追加したい場合、[推奨翻訳方法](/how-to-translate.md)を読んでから始めてください!
+翻訳を追加したい場合、[translation recommendations](/how-to-translate.md)を読んでから始めてください!
 
 ### 日本語訳の方針 (by takahashim)
 

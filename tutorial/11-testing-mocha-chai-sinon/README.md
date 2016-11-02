@@ -53,7 +53,7 @@ Mochaのテストは木構造のような階層構造で動作します。ここ
 
 さあ、テストを実行してみましょう！
 
-- `gulp-mocha`プラグインを使って、以下の`test`タスクを作ります:
+`gulp-mocha`プラグインを使って、`gulpfile.babel.js`に以下の`test`タスクを作ります:
 
 ```javascript
 import mocha from 'gulp-mocha';

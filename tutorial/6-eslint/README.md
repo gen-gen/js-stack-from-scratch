@@ -64,7 +64,7 @@ gulp.task('build', ['lint', 'clean'], () => {
 
 警告の一種として、`'gulp' should be listed in the project's dependencies, not devDependencies (import/no-extraneous-dependencies)`といった出力があるとか思います。これは実際には誤検知に当たります。ESLintはビルド時のみに使われるJSファイルがどれで、そうではないJSファイルがどれかを知ることができません。そのため、コード内のコメントを使ってESLintに教えてあげる必要があります。`gulpfile.babel.js`ファイルの先頭に、以下を追加します:
 
-```javascript```
+```javascript
 /* eslint-disable import/no-extraneous-dependencies */
 ```
 
