@@ -1,7 +1,7 @@
 require 'fileutils'
 require 'rake/clean'
 
-CONCAT_FILE = "all.md"
+CONCAT_FILE = "qiita.md"
 HEADER_COMMENT = <<-EOB
 （訳者注: これは、[JavaScript Stack from Scratch](https://github.com/verekia/js-stack-from-scratch)を翻訳し、まとめて読めるように1ファイルにしたものです。元の翻訳と各種ファイルについては、[日本語訳forkリポジトリ](https://github.com/takahashim/js-stack-from-scratch)を参照してください。また、原文が活発に更新されているため、訳文も追従して更新されます。ご了承ください。）
 
