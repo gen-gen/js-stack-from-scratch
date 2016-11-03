@@ -37,6 +37,7 @@ obj.set('a', 2); // Returns a new object without mutating `obj`
   ]
 }
 ```
+
 これは`Map`と`List`(この2つのImmutableなオブジェクトはずっと使うことになります)を例外扱いするようESLintルールを変更するものです。この冗長なJSONフォーマットはYarn/NPMによって自動的に行われるもので、残念ながらコンパクトにはできません。
 
 それはさておき、Immutableに戻りましょう:

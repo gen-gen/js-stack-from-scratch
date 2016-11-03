@@ -37,6 +37,7 @@ document.querySelector('.app').innerText = browserToby.bark();
   "browser": true
 }
 ```
+
 こうすると、`window`や`document`といったブラウザでは必ずアクセスできる変数を使っていても、ESLintは未定義変数の警告を出さないようになります。
 
 さらに、`Promise`など、最新のESの仕様を使いたい場合には、[Babel Polyfill](https://babeljs.io/docs/usage/polyfill/)をクライアントコードに含める必要があります。

@@ -25,7 +25,6 @@
 
 **注意**: パッケージの依存関係には、`"dependencies"`と`"devDependencies"`の2種類あります。`"dependencies"`は`"devDependencies"`より一般的なもので、後者は開発している間だけ使うパッケージであり、本番環境では使いません（典型的には、ビルド関係のパッケージや、linterなどがあります）。`"devDependencies"`に追加するには、`yarn add --dev [package]`と実行します。
 
-
 原文: [2 - Installing and using a package](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/2-packages)
 
 次章: [3 - Setting up ES6 with Babel and Gulp](/tutorial/3-es6-babel-gulp)

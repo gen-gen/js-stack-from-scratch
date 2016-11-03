@@ -12,6 +12,7 @@ macOSとWindowsバイナリ用[ダウンロードページ](https://nodejs.org/e
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
+
 Node のバージョンは6.5.0以降であればどれでも構いません。
 
 Nodeの標準パッケージマネージャー、`npm`はNodeに付属しているため、別途インストールする必要はありません。
@@ -31,7 +32,7 @@ Nodeの標準パッケージマネージャー、`npm`はNodeに付属してい�
 
 - `package.json`内の`scripts`オブジェクトに`"start": "node ."`と追加します。
 
-```
+```json
 "scripts": {
   "start": "node ."
 }
@@ -43,7 +44,7 @@ Nodeの標準パッケージマネージャー、`npm`はNodeに付属してい�
 
 - `.gitignore`を作り、以下の内容を追加します。
 
-```
+```gitignore
 npm-debug.log
 yarn-error.log
 ```

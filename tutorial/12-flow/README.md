@@ -97,7 +97,7 @@ Immutableがこの件を公式に解決するまで、Immutableコンポーネ�
 
 **注意**: Flowが型エラーを`node_modules`フォルダで見つけた場合、問題のあるパッケージを無視するため`[ignore]`セクションを`.flowconfig`に追加します(`node_modules`ディレクトリ全体を無視しないようにします)。以下のようになります:
 
-```
+```flowconfig
 [ignore]
 
 .*/node_modules/gulp-flowtype/.*
