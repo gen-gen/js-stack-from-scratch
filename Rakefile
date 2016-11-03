@@ -8,28 +8,18 @@ HEADER_COMMENT = <<-EOB
 EOB
 
 TOC = <<-EOB
+
 [1 - Node、NPM、Yarn、そして package.json](#1---nodenpmyarnそしてpackagejson)
-
 [2 - packageのインストールと使用](#2---パッケージのインストールと利用)
-
 [3 - Babel と Gulp による ES6 のセットアップ](#3---babelとgulpによるes6のセットアップ)
-
 [4 - ES6のクラス構文を使う](#4---es6のクラス構文を使う)
-
 [5 - ES6モジュール構文](#5---es6モジュール構文)
-
 [6 - ESLint](#6---eslint)
-
 [7 - Webpackによるクライアントアプリ](#7---webpackによるクライアントアプリ)
-
 [8 - React](#8---react)
-
 [9 - Redux](#9---redux)
-
 [10 - Immutable JS と Redux の改良](#10---immutable-jsとreduxの改良)
-
 [11 - Mocha、Chai、Sinonによるテスティング](#11---mochachaisinonによるテスティング)
-
 [12 - Flowによる型検査](#12---flow)
 
 EOB
