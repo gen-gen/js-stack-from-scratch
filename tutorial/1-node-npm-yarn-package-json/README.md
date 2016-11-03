@@ -51,7 +51,7 @@ yarn-error.log
 
 **注意**: 私が作った`package.json`ファイル内には、各章に対して`tutorial-test`スクリプトがあります。このスクリプトは`yarn && yarn start`で各章が正しく実行されることを私自身がテストするためのものです。他のプロジェクトに使う場合は、ここは削除しても構いません。
 
-原文: [1 - Node, NPM, Yarn, and package.json](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/1-node-npm-yarn-package-json)
+(原文: [1 - Node, NPM, Yarn, and package.json](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/1-node-npm-yarn-package-json))
 
 次章: [2 - パッケージのインストールと使用](/tutorial/2-packages)
 

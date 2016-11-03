@@ -189,7 +189,7 @@ gulp.task('clean', () => del([
 
 - `/dist/client-bundle.js*`を`.gitignore`ファイルに追加します。
 
-原文: [7 - Client App with Webpack](https://github.com/verekia/js-stack-from-scratch/blob/master/tutorial/7-client-webpack)
+(原文: [7 - Client App with Webpack](https://github.com/verekia/js-stack-from-scratch/blob/master/tutorial/7-client-webpack))
 
 次章: [8 - React](/tutorial/8-react)
 

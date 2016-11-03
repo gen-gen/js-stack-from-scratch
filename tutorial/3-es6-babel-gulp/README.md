@@ -87,7 +87,7 @@ GulpのAPI自体は非常に率直なものです。`gulp.task`を定義し、�
 - `yarn start`と実行します。"Hello ES6"と表示され、変更の監視が始まるはずです。 `src/index.js`に間違ったコードを書いてみて、saveしたときにGulpが自動的にエラーを表示するか試してみましょう。
 - `/lib/`を`.gitignore`に追加します。
 
-原文: [3 - Setting up ES6 with Babel and Gulp](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/3-es6-babel-gulp)
+(原文: [3 - Setting up ES6 with Babel and Gulp](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/3-es6-babel-gulp))
 
 次章: [4 - ES6構文によるクラスの使い方](/tutorial/4-es6-syntax-class)
 

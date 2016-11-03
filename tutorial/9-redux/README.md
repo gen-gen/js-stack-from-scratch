@@ -154,7 +154,7 @@ export default connect(mapStateToProps)(Message);
 
 - `yarn start`を実行し、`index.html`を開きます。そうすると、"The dog did not bark"とボタンが表示されます。ボタンをクリックすると、"The dog barked"というメッセージが表示されるはずです。
 
-原文: [9 - Redux](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/9-redux)
+(原文: [9 - Redux](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/9-redux))
 
 次章 : [10 - Immutable JS と Redux の改良](/tutorial/10-immutable-redux-improvements)
 

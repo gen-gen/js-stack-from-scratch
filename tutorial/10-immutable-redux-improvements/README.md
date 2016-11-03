@@ -101,7 +101,7 @@ export const makeBark = createAction(MAKE_BARK, () => true);
 
 - `yarn add redux-actions`を忘れずに実行します。
 
-原文: [10 - Immutable JS and Redux Improvements](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/10-immutable-redux-improvements)
+(原文: [10 - Immutable JS and Redux Improvements](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/10-immutable-redux-improvements))
 
 次章: [11 - Mocha、Chai、Sinonによるテスティング](/tutorial/11-testing-mocha-chai-sinon)
 

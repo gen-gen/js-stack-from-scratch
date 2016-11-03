@@ -107,7 +107,7 @@ Immutableがこの件を公式に解決するまで、Immutableコンポーネ�
 
 これでlintされて、型検査もテストも通った万全のコードができました!
 
-原文: [12 - Flow](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/12-flow)
+(原文: [12 - Flow](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/12-flow))
 
 [前章](/tutorial/11-testing-mocha-chai-sinon)または[目次](https://github.com/verekia/js-stack-from-scratch)に戻る。
 

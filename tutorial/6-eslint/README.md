@@ -114,7 +114,7 @@ gulp.task('build', ['lint', 'clean'], () =>
 
 **注意**: この章ではコンソール用にESLintを設定しています。ビルド時/pushする前にエラーを見つけられるのは素晴らしいことですが、もしかするとIDEにも統合したくなるかもしれません。しかし、IDEに付属しているES6用のlintツールを使わないでください。そのツールがlinting用に使っているバイナリは`node_modules`フォルダにあるように設定してください。そううするとそのツールはプロジェクトの全ての設定、Airbnbのプリセットなど全てが利用できるようになります。そうでなければ、一般的なES6のlintingしか使えるようになりません。
 
-原文: [6 - ESLint](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/6-eslint)
+(原文: [6 - ESLint](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/6-eslint))
 
 次章: [7 - Webpackによるクライアントアプリ](/tutorial/7-client-webpack)
 

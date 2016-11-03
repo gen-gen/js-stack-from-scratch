@@ -36,7 +36,7 @@ console.log(toby.bark());
 
 - `lib`に生成されたコードを見て、コンパイルされたコードがどのようになっているかを確認します(例えば`const`の代わりに`var`があるなど).
 
-原文: [4 - Using the ES6 syntax with a class](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/4-es6-syntax-class)
+(原文: [4 - Using the ES6 syntax with a class](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/4-es6-syntax-class))
 
 次章: [5 - ES6のモジュールの構文](/tutorial/5-es6-modules-syntax)
 

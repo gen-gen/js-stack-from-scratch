@@ -153,7 +153,7 @@ describe('Shared', () => {
 
 もしこの章の内容がうまくいっていれば、パスするテストが2つ得られるはずです。
 
-原文: [11 - Testing with Mocha, Chai, and Sinon](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/11-testing-mocha-chai-sinon)
+(原文: [11 - Testing with Mocha, Chai, and Sinon](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/11-testing-mocha-chai-sinon))
 
 次章: [12 - Flowによる型検査](/tutorial/12-flow)
 

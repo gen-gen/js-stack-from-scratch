@@ -45,7 +45,7 @@ import { exec } from 'child_process';
 
 - `yarn start`を実行すると "Wah wah, I am Toby" と表示されるはずです。
 
-原文: [5 - The ES6 modules syntax](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/5-es6-modules-syntax)
+(原文: [5 - The ES6 modules syntax](https://github.com/verekia/js-stack-from-scratch/tree/master/tutorial/5-es6-modules-syntax))
 
 次章: [6 - ESLint](/tutorial/6-eslint)
 
