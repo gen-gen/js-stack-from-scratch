@@ -130,7 +130,7 @@ Webpackはさまざまなことを行います。プロジェクトがクライ�
 
 Gulpプラグイン同様、`webpack-stream`パッケージを使えば、GulpにWebpackに統合するのも簡単です。
 
--  `yarn add --dev webpack-stream`を実行し、パッケージをインストールします
+- `yarn add --dev webpack-stream`を実行し、パッケージをインストールします
 
 - 以下の`import`を追加します:
 
