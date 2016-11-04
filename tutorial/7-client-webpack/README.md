@@ -124,7 +124,7 @@ Webpackはさまざまなことを行います。プロジェクトがクライ�
 
 それではWebpackを実行するGulpタスクを作りましょう。`gulpfile.babel.js`を開きます。
 
-`node lib/`を実行する`main`タスクはもう必要ありません。`index.html`を開けばアプリが実行されるためす。
+`node lib/`を実行する`main`タスクはもう必要ありません。`index.html`を開けばアプリが実行されるためです。
 
 - `import { exec } from 'child_process'`を削除します
 
