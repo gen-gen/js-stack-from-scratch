@@ -84,7 +84,7 @@ const mapStateToProps = state => ({
 
 - `yarn add redux-immutable`を実行します。
 - `app.jsx`にある`combineReducers`関数を`redux-immutable`からimportしたものに置き換えます。
-- `bark-message.js`の`state.getIn(['dog', 'hasBarked'])`を`state.dog.get('hasBarked')`に置き換えます。
+- `bark-message.js`の`state.dog.get('hasBarked')`を`state.getIn(['dog', 'hasBarked'])`に置き換えます。
 
 ## Reduxアクション
 
