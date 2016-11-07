@@ -19,7 +19,7 @@
 
 `plugins`の部分はES6のimport構文を使うことをESLintに教えています。
 
-**注意**: プロジェクトのルートにある`.eslintrc.js`や`.eslintrc.json`、`. eslintrc.yaml`ファイルの代わりに、`package.json`ファイルの`eslintConfig`フィールドを使うこともできます。Babelの設定と同様、ルートフォルダが多くのファイルで溢れるのを避けるためこのようにしていますが、ESLintの設定が複雑化してきたら、この代替策を検討してください。
+**注意**: プロジェクトのルートにある`.eslintrc.js`や`.eslintrc.json`、`.eslintrc.yaml`ファイルの代わりに、`package.json`ファイルの`eslintConfig`フィールドを使うこともできます。Babelの設定と同様、ルートフォルダが多くのファイルで溢れるのを避けるためこのようにしていますが、ESLintの設定が複雑化してきたら、この代替策を検討してください。
 
 ESLintを実行するためのGulpタスクが必要です。そのため、ESLint Gulpプラグインをインストールします。
 
