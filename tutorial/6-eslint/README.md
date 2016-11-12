@@ -2,7 +2,7 @@
 
 潜在的な問題を見つけるため、コードをlintしましょう。ESLintはES6コード用のlinterです。ルールを自身で細かく設定する代わりに、Airbnbが作った設定を利用します。この設定はプラグインをいくつか使うため、プラグインをインストールする必要があります。
 
-- `yarn add --dev eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react`を実行します
+- `yarn add --dev eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y@2.2.3 eslint-plugin-react`を実行します
 
 このように、複数のパッケージを一つのコマンドでインストールできます。いつものように、これらは全て`package.jsonに追加されます。
 
@@ -117,4 +117,4 @@ gulp.task('build', ['lint', 'clean'], () =>
 
 次章: [7 - Webpackによるクライアントアプリ](/tutorial/7-client-webpack)
 
-[前章](/tutorial/5-es6-modules-syntax)または[目次](https://github.com/verekia/js-stack-from-scratch)に戻る。
+[前章](/tutorial/5-es6-modules-syntax)または[目次](https://github.com/verekia/js-stack-from-scratch#table-of-contents)に戻る。

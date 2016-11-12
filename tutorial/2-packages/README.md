@@ -29,4 +29,4 @@
 
 次章: [3 - ES6をBabelとGulpを使ってセットアップ](/tutorial/3-es6-babel-gulp)
 
-[前章](/tutorial/1-node-npm-yarn-package-json)または[目次](https://github.com/verekia/js-stack-from-scratch)に戻る
+[前章](/tutorial/1-node-npm-yarn-package-json)または[目次](https://github.com/verekia/js-stack-from-scratch#table-of-contents)に戻る

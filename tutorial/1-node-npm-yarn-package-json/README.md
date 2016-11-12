@@ -55,4 +55,4 @@ yarn-error.log
 
 次章: [2 - パッケージのインストールと使用](/tutorial/2-packages)
 
-[目次](https://github.com/verekia/js-stack-from-scratch)に戻る
+[目次](https://github.com/verekia/js-stack-from-scratch#table-of-contents)に戻る

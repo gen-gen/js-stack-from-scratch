@@ -193,4 +193,4 @@ gulp.task('clean', () => del([
 
 次章: [8 - React](/tutorial/8-react)
 
-[前章](/tutorial/6-eslint)または[目次](https://github.com/verekia/js-stack-from-scratch)に戻る。
+[前章](/tutorial/6-eslint)または[目次](https://github.com/verekia/js-stack-from-scratch#table-of-contents)に戻る。

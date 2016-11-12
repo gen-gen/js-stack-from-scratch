@@ -158,4 +158,4 @@ export default connect(mapStateToProps)(Message);
 
 次章 : [10 - Immutable JS と Redux の改良](/tutorial/10-immutable-redux-improvements)
 
-[前章](/tutorial/8-react) または [目次](https://github.com/verekia/js-stack-from-scratch) に戻る。
+[前章](/tutorial/8-react) または [目次](https://github.com/verekia/js-stack-from-scratch#table-of-contents) に戻る。

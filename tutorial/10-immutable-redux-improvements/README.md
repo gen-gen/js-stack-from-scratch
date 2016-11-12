@@ -105,4 +105,4 @@ export const makeBark = createAction(MAKE_BARK, () => true);
 
 次章: [11 - Mocha、Chai、Sinonによるテスティング](/tutorial/11-testing-mocha-chai-sinon)
 
-[前章](/tutorial/9-redux) または [目次](https://github.com/verekia/js-stack-from-scratch)に戻る。
+[前章](/tutorial/9-redux) または [目次](https://github.com/verekia/js-stack-from-scratch#table-of-contents)に戻る。

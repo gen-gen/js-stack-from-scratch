@@ -49,4 +49,4 @@ import { exec } from 'child_process';
 
 次章: [6 - ESLint](/tutorial/6-eslint)
 
-[前章](/tutorial/4-es6-syntax-class)または[目次](https://github.com/verekia/js-stack-from-scratch)に戻る。
+[前章](/tutorial/4-es6-syntax-class)または[目次](https://github.com/verekia/js-stack-from-scratch#table-of-contents)に戻る。

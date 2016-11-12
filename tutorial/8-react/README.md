@@ -57,4 +57,4 @@ clientEntryPoint: 'src/client/app.jsx',
 
 次章: [9 - Redux](/tutorial/9-redux)
 
-[前章](/tutorial/7-client-webpack)または[目次](https://github.com/verekia/js-stack-from-scratch)に戻る。
+[前章](/tutorial/7-client-webpack)または[目次](https://github.com/verekia/js-stack-from-scratch#table-of-contents)に戻る。

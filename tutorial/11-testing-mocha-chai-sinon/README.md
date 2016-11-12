@@ -157,4 +157,4 @@ describe('Shared', () => {
 
 次章: [12 - Flowによる型検査](/tutorial/12-flow)
 
-[前章](/tutorial/10-immutable-redux-improvements)または[目次](https://github.com/verekia/js-stack-from-scratch)に戻る。
+[前章](/tutorial/10-immutable-redux-improvements)または[目次](https://github.com/verekia/js-stack-from-scratch#table-of-contents)に戻る。

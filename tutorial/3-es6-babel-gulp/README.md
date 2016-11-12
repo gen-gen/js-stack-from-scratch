@@ -91,4 +91,4 @@ GulpのAPI自体は非常に率直なものです。`gulp.task`を定義し、�
 
 次章: [4 - ES6構文によるクラスの使い方](/tutorial/4-es6-syntax-class)
 
-[前章](/tutorial/2-packages)または[目次](https://github.com/verekia/js-stack-from-scratch)に戻る。
+[前章](/tutorial/2-packages)または[目次](https://github.com/verekia/js-stack-from-scratch#table-of-contents)に戻る。
