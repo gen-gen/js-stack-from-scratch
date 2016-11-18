@@ -19,7 +19,7 @@ Nodeの標準パッケージマネージャー、`npm`はNodeに付属してい�
 
 **注意**: Nodeがすでにインストールされている場合、`nvm`([Node Version Manager](https://github.com/creationix/nvm)) をインストールし、`nvm`を使って最新のNodeをインストールしてください。
 
-[Yarn](https://yarnpkg.com/)はNPMよりも高速なもう一つのパッケージマネージャで、オフライン環境にも対応し、依存しているものを[より期待通りに](https://yarnpkg.com/en/docs/yarn-lock)取得します。Yarnは2016年10月に[リリース](https://code.facebook.com/posts/1840075619545360)されて以来、パッケージマネージャの新たな選択肢としてJavaScriptコミュニティに急速に受け入れられつつあります。このチュートリアルではYarnを使っています。NPMを使いたい場合は、`yarn add`や`yarn add --dev`などのコマンドを、`npm install --save`や`npm install --dev`などと読み替えてください。
+[Yarn](https://yarnpkg.com/)はNPMよりも高速なもう一つのパッケージマネージャで、オフライン環境にも対応し、依存しているものを[より期待通りに](https://yarnpkg.com/en/docs/yarn-lock)取得します。Yarnは2016年10月に[リリース](https://code.facebook.com/posts/1840075619545360)されて以来、パッケージマネージャの新たな選択肢としてJavaScriptコミュニティに急速に受け入れられつつあります。このチュートリアルではYarnを使っています。NPMを使いたい場合は、`yarn add`や`yarn add --dev`などのコマンドを、`npm install --save`や`npm install --save-dev`などと読み替えてください。
 
 - [インストール手順](https://yarnpkg.com/en/docs/install)に従ってYarnをインストールします。`npm install -g yarn`や`sudo npm install -g yarn`などでインストールすることもできます（そうです、YarnをインストールするのにNPMを使うのです。Internet ExplorerやSafariを使ってChromeをインストールするようなものですね!）
 

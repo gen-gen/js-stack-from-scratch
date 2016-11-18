@@ -77,7 +77,7 @@ export default Dog;
 
 - `src`以下のすべての`.js`と`.jsx`ファイルに対して、`// @flow`を追加し、`yarn test`または`yarn start`を実行します。そしてFlowが提案した部分全部に対して、型アノテーションを追加します。
 
-直感的ではない例としては、`src/client/component/message.jsx`にある以下のものがあります:
+直感的ではない例としては、`src/client/components/message.jsx`にある以下のものがあります:
 
 ```javascript
 const Message = ({ message }: { message: string }) => <div>{message}</div>;
