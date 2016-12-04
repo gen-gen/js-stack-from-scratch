@@ -13,7 +13,7 @@
 `yarn.lock`というファイルをYarnが生成したことにも気づくでしょう。このファイルはリポジトリにコミットしておくべきです。こうしておけば、チーム内のメンバー全員が同じバージョンのパッケージを利用するようになります。もしYarnではなくNPMを使いたい場合は、*shrinkwrap*がこのファイルの代わりとなります。
 
 - `index.js`ファイルに`const Color = require('color');`と追加します。
-- 例として以下のような形でパッケージを使ってみます: `const redHexa = Color({r: 255, g: 0, b: 0}).hexString();`
+- 例として以下のような形でパッケージを使ってみます: `const redHexa = Color({r: 255, g: 0, b: 0}).hex();`
 - `console.log(redHexa)`を追加します。
 - `yarn start`と実行すると、`#FF0000`と表示されるはずです。
 
