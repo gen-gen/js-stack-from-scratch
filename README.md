@@ -1,6 +1,10 @@
 # ゼロから始めるJavaScript生活
 
-[![Build Status](https://travis-ci.org/verekia/js-stack-from-scratch.svg?branch=master)](https://travis-ci.org/verekia/js-stack-from-scratch) [![Join the chat at https://gitter.im/js-stack-from-scratch/Lobby](https://badges.gitter.im/js-stack-from-scratch/Lobby.svg)](https://gitter.im/js-stack-from-scratch/Lobby)
+[![Build Status](https://travis-ci.org/verekia/js-stack-from-scratch.svg?branch=master)](https://travis-ci.org/verekia/js-stack-from-scratch)
+[![Release](https://img.shields.io/github/release/verekia/js-stack-from-scratch.svg?style=flat-square)](https://github.com/verekia/js-stack-from-scratch/releases)
+[![Dependencies](https://img.shields.io/david/verekia/js-stack-boilerplate.svg?style=flat-square)](https://david-dm.org/verekia/js-stack-boilerplate)
+[![Dev Dependencies](https://img.shields.io/david/dev/verekia/js-stack-boilerplate.svg?style=flat-square)](https://david-dm.org/verekia/js-stack-boilerplate?type=dev)
+[![Gitter](https://img.shields.io/gitter/room/js-stack-from-scratch/Lobby.svg?style=flat-square)](https://gitter.im/js-stack-from-scratch/)
 
 [![React](/img/react-padded-90.png)](https://facebook.github.io/react/)
 [![Redux](/img/redux-padded-90.png)](http://redux.js.org/)
@@ -24,27 +28,29 @@
 
 コード例は章ごとに用意しており、それぞれ`yarn && yarn start`で実行できます。とはいえ、各章の**ステップバイステップの指示**に従って全てゼロから入力することを推奨します。
 
-最終的なコードは[JS-Stack-Boilerplate repository](https://github.com/verekia/js-stack-boilerplate)から入手可能です。これはLinuxとmacOS、そしてWindowsで動作します。
+最終的なコードは[JS-Stack-Boilerplate repository](https://github.com/verekia/js-stack-boilerplate)と[releases](https://github.com/verekia/js-stack-from-scratch/releases)から入手可能です。[live demo](https://js-stack.herokuapp.com/)もあります。
+
+これはLinuxとmacOS、そしてWindowsで動作します。
 
 ## 目次
 
-[01 - Node, Yarn, `package.json`](/tutorial/01-node-yarn-package-json)
+[01 - Node, Yarn, `package.json`](/tutorial/01-node-yarn-package-json.md#readme)
 
-[02 - Babel, ES6, ESLint, Flow, Jest, Husky](/tutorial/02-babel-es6-eslint-flow-jest-husky)
+[02 - Babel, ES6, ESLint, Flow, Jest, Husky](/tutorial/02-babel-es6-eslint-flow-jest-husky.md#readme)
 
-[03 - Express, Nodemon, PM2](/tutorial/03-express-nodemon-pm2)
+[03 - Express, Nodemon, PM2](/tutorial/03-express-nodemon-pm2.md#readme)
 
-[04 - Webpack, React, HMR](/tutorial/04-webpack-react-hmr)
+[04 - Webpack, React, HMR](/tutorial/04-webpack-react-hmr.md#readme)
 
-[05 - Redux, Immutable, Fetch](/tutorial/05-redux-immutable-fetch)
+[05 - Redux, Immutable, Fetch](/tutorial/05-redux-immutable-fetch.md#readme)
 
-[06 - React Router, Server-Side Rendering, Helmet](/tutorial/06-react-router-ssr-helmet)
+[06 - React Router, Server-Side Rendering, Helmet](/tutorial/06-react-router-ssr-helmet.md#readme)
 
-[07 - Socket.IO](/tutorial/07-socket-io)
+[07 - Socket.IO](/tutorial/07-socket-io.md#readme)
 
-[08 - Bootstrap, JSS](/tutorial/08-bootstrap-jss)
+[08 - Bootstrap, JSS](/tutorial/08-bootstrap-jss.md#readme)
 
-[09 - Travis, Coveralls, Heroku](/tutorial/09-travis-coveralls-heroku)
+[09 - Travis, Coveralls, Heroku](/tutorial/09-travis-coveralls-heroku.md#readme)
 
 ## 今後の予定
 
@@ -57,6 +63,8 @@
 ### V2
 
 すぐにここに載せます ;)
+
+Check out the [ongoing translations](https://github.com/verekia/js-stack-from-scratch/issues/147).
 
 ### V1
 
