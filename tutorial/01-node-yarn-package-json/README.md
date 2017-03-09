@@ -1,46 +1,48 @@
 # 01 - Node, Yarn, and `package.json`
 
-In this section we will set up Node, Yarn, a basic `package.json` file, and try a package.
+この章ではNode、Yarn、そして基本的な`package.json`ファイルとパッケージのセットアップを行います.
 
 ## Node
 
-> 💡 **[Node.js](https://nodejs.org/)** is a JavaScript runtime environment. It is mostly used for Back-End development, but also for general scripting. In the context of Front-End development, it can be used to perform a whole bunch of tasks like linting, testing, and assembling files.
+> 💡 **[Node.js](https://nodejs.org/)** はJavaScriptの実行環境です。Nodeはバックエンドの開発だけではなく、一般的なスクリプティングにも使われています。フロントエンド開発においては、整形(linting)、テスティング、ファイルのアセンブリングといった様々なタスクに使われます。
 
-We will use Node for basically everything in this tutorial, so you're going to need it. Head to the [download page](https://nodejs.org/en/download/current/) for **macOS** or **Windows** binaries, or the [package manager installations page](https://nodejs.org/en/download/package-manager/) for Linux distributions.
+このチュートリアルではあらゆるところにNodeを使っているため、Nodeをインストールする必要があります。**macOS** と **Windows** 用バイナリの[ダウンロードページ](https://nodejs.org/en/download/current/)に行くか、Linuxディストリビューション用の[package manager installations page](https://nodejs.org/en/download/package-manager/)に行きます。
 
-For instance, on **Ubuntu / Debian**, you would run the following commands to install Node:
+たとえば、**UbuntuかDebian** であれば、Nodeをインストールするために以下のコマンドを実行します。
 
 ```sh
 curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
-You want any version of Node > 6.5.0.
+Node のバージョンは6.5.0以降であればどれでも構いません。
 
 ## NVM
 
-If Node is already installed, or if you want more flexibility, install NVM ([Node Version Manager](https://github.com/creationix/nvm)), and make NVM install and use the latest version of Node for you.
+Nodeがすでにインストールされている場合、あるいはより高い柔軟性を求める場合、NVM ([Node Version Manager](https://github.com/creationix/nvm)) をインストールし、NVM を使って最新のNodeをインストールしてください。
 
 ## NPM
 
-NPM is the default package manager for Node. It is automatically installed alongside with Node. Package managers are used to install and manage packages (modules of code that you or someone else wrote). We are going to use a lot of packages in this tutorial, but we'll use Yarn, another package manager.
+NPMはNodeのデフォルトのパッケージマネージャーで、Nodeと合わせて自動的にインストールされます。パッケージマネージャーはパッケージ(あなたや第三者の書いたコードのモジュール)をインストールして管理するために使われます。このチュートリアルではたくさんのパッケージを使いますが、ここではもう一つのパッケージマネージャー、Yarnを使います。
 
 ## Yarn
 
-> 💡 **[Yarn](https://yarnpkg.com/)** is a Node.js package manager which is much faster than NPM, has offline support, and fetches dependencies [more predictably](https://yarnpkg.com/en/docs/yarn-lock).
+> 💡 **[Yarn](https://yarnpkg.com/)** はNode.jsのパッケージマネージャーで、NPMよりも高速であり、オフライン環境にも対応し、依存しているものを[より期待通りに](https://yarnpkg.com/en/docs/yarn-lock)取得します。
 
-Since it [came out](https://code.facebook.com/posts/1840075619545360) in October 2016, it received a very quick adoption and may soon become the package manager of choice of the JavaScript community. If you want to stick to NPM you can simply replace all `yarn add` and `yarn add --dev` commands of this tutorial by `npm install --save` and `npm install --save-dev`.
 
-- Install Yarn by following the [instructions](https://yarnpkg.com/en/docs/install) for your OS.
+Yarnは2016年10月に[リリース](https://code.facebook.com/posts/1840075619545360)されて以来、パッケージマネージャの新たな選択肢としてJavaScriptコミュニティに急速に受け入れられつつあります。NPMを使いたい場合は、`yarn add`や`yarn add --dev`などのコマンドを、`npm install --save`や`npm install --save-dev`などと読み替えてください。
+
+
+- お使いのOSの[インストール手順](https://yarnpkg.com/en/docs/install)に従ってYarnをインストールします。
 
 ## `package.json`
 
-> 💡 **[package.json](https://yarnpkg.com/en/docs/package-json)** is the file used to describe and configure your JavaScript project. It contains general information (your project name, version, contributors, license, etc), configuration options for tools you use, and even a section to run *tasks*.
+> 💡 **[package.json](https://yarnpkg.com/en/docs/package-json)** はJavaScriptプロジェクトを記述・設定するのに使われるファイルです。このファイルは一般的な情報(プロジェクト名、バージョン、コントリビューター、ライセンスなど)や、使用するツールの設定オプション、さらに *tasks* を実行するためのセクションも含んでいます。
 
-- Create a new folder to work in, and `cd` in it.
-- Run `yarn init` and answer the questions (`yarn init -y` to skip all questions), to generate a `package.json` file automatically.
+- 新しい作業用フォルダを作り、`cd`で移動します。
+- `yarn init`を実行し、質問に答えると(`yarn init -y`で全ての質問をスキップできます)、`package.json`ファイルが自動生成されます。
 
-Here is the basic `package.json` I'll use in this tutorial:
+以下は基本的な`package.json`で、このチュートリアルで使っていきます:
 
 ```json
 {
@@ -52,17 +54,17 @@ Here is the basic `package.json` I'll use in this tutorial:
 
 ## Hello World
 
-- Create an `index.js` file containing `console.log('Hello world')`
+- `console.log('Hello world')`と書かれた`index.js`ファイルを作ります。
 
-🏁 Run `node .` in this folder (`index.js` is the default file Node looks for in a folder). It should print "Hello world".
+🏁 そのフォルダ内で`node .`と実行します(`index.js`はNodeがカレントフォルダ内で探すデフォルトのファイル名です)。"Hello world"と表示されるはずです。
 
-**Note**: See that 🏁 racing flag emoji? I will use it every time you reach a **checkpoint**. We are sometimes going to make a lot of changes in a row, and your code may not work until you reach the next checkpoint.
+**Note**: レーシングフラグの絵文字 🏁 が見えますか? これは **チェックポイント** に来た時に使います. 今後たくさんの変更を行いますが、次のチェックポイントまでコードが動かなくなるかもしれません.
 
-## `start` script
+## `start` スクリプト
 
-Running `node .` to execute our program is a bit too low-level. We are going to use an NPM/Yarn script to trigger the execution of that code instead. That will give us a nice abstraction to be able to always use `yarn start`, even when our program gets more complicated.
+`node .`でプログラムを実行させるのはやや低レベル寄りです。代わりにNPM/Yarnスクリプトを使ってコードを実行します。より複雑なプログラムを実行する場合でも、必ず`yarn start`で実行できるようにするのは、適切な抽象化になっています。
 
-- In `package.json`, add a `scripts` object like so:
+- `package.json`内に、次のような`scripts`オブジェクトを追加します:
 
 ```json
 {
@@ -72,45 +74,46 @@ Running `node .` to execute our program is a bit too low-level. We are going to 
   "scripts": {
     "start": "node ."
   }
+
 }
 ```
 
-`start` is the name we give to the *task* that will run our program. We are going to create a lot of different tasks in this `scripts` object throughout this tutorial. `start` is typically the name given to the default task of an application. Some other standard task names are `stop` and `test`.
+`start`はこのプログラムを動かす *task* につけられた名前です。このチュートリアルを通じて、この`scripts`オブジェクト内にはたくさんの異なるタスクが作られます。`start`はアプリケーションのデフォルトのタスクにつけられる典型的な名前です。他の標準的なタスク名としては`stop`や`test`があります。
 
-`package.json` must be a valid JSON file, which means that you cannot have trailing commas. So be careful when editing manually your `package.json` file.
+`package.json`は構文的に正しいJSONファイルでなければならないので、末尾のカンマを追加してはいけません。`package.json`ファイルを手で編集する時はよく注意してください。
 
-🏁 Run `yarn start`. It should print `Hello world`.
+🏁 `yarn start`と実行します。`Hello world`と表示されるはずです。
 
-## Git and `.gitignore`
+## Git と `.gitignore`
 
-- Initialize a Git repository with `git init`
+- `git init`と入力してGitレポジトリを初期化します。
 
-- Create a `.gitignore` file and add the following to it:
+- `.gitignore`ファイルを作り、以下の内容を追加します。
 
 ```gitignore
 .DS_Store
 /*.log
 ```
 
-`.DS_Store` files are auto-generated macOS files that you should never have in your repository.
+`.DS_Store` ファイルはmacOSが自動生成するファイルで、リポジトリには決して入れないようにします。
 
-`npm-debug.log` and `yarn-error.log` are files that are created when your package manager encounters an error, we don't want them versioned in our repository.
+`npm-debug.log` と `yarn-error.log` はパッケージマネージャーがエラーに遭遇した際に作られるファイルで、こちらもリポジトリには入れたくないファイルです。
 
-## Installing and using a package
+## インストールとパッケージの使用
 
-In this section we will install and use a package. A "package" is simply a piece of code that someone else wrote, and that you can use in your own code. It can be anything. Here, we're going to try a package that helps you manipulate colors for instance.
+この章では、パッケージをインストールして使ってみます。「パッケージ」とは他の誰かが書いたコードの集まりのことで、これから書くコード内で利用することができます。どんなコードでもです。ここでは、例として色を扱うためのパッケージを使ってみます。
 
-- Install the community-made package called `color` by running `yarn add color`
+- コミュニティ製のパッケージ`color`をインストールするため、`yarn add color`と実行します。
 
-Open `package.json` to see how Yarn automatically added `color` in  `dependencies`.
+`package.json`を開くと、Yarnが`dependencies`に`color`を自動的に追加したのがわかります。
 
-A `node_modules` folder has been created to store the package.
+そして`node_modules`フォルダが作られ、そこにパッケージが保存されます。
 
-- Add `node_modules/` to your `.gitignore`
+- `.gitignore`ファイルに`node_modules/`を追加します。
 
-You will also notice that a `yarn.lock` file got generated by Yarn. You should commit this file to your repository, as it will ensure that everyone in your team uses the same version of your packages. If you're sticking to NPM instead of Yarn, the equivalent of this file is the *shrinkwrap*.
+`yarn.lock`というファイルをYarnが生成したことにも気づくでしょう。このファイルはリポジトリにコミットしておくべきです。こうしておけば、チーム内のメンバー全員が同じバージョンのパッケージを利用するようになります。もしYarnではなくNPMを使いたい場合は、*shrinkwrap*がこのファイルの代わりとなります。
 
-- Write the following to your `index.js` file:
+- `index.js` フィルに以下のように書きます:
 
 ```js
 const color = require('color')
@@ -120,22 +123,25 @@ const redHexa = color({ r: 255, g: 0, b: 0 }).hex()
 console.log(redHexa)
 ```
 
-🏁 Run `yarn start`. It should print `#FF0000`.
+🏁 `yarn start`と実行すると、`#FF0000`と表示されるはずです。
 
-Congratulations, you installed and used a package!
+おめでとうございます、パッケージをインストールして使うことができました!
 
-`color` is just used in this section to teach you how to use a simple package. We won't need it anymore, so you can uninstall it:
+`color`はこの章の中でしか使わない、パッケージの使い方を説明するためだけのシンプルなパッケージです。もう不要になったので、アンインストールして構いません。
 
-- Run `yarn remove color`
+- `yarn remove color`を実行します
 
-## Two kinds of dependencies
+## 2種類の依存関係
 
-There are two kinds of package dependencies, `"dependencies"` and `"devDependencies"`:
+パッケージの依存関係には、`"dependencies"`と`"devDependencies"`の2種類があります。
 
-**Dependencies** are libraries you need for your application to function (React, Redux, Lodash, jQuery, etc). You install them with `yarn add [package]`.
+**Dependencies** はアプリケーションを実行するために必要なライブラリです (React, Redux, Lodash, jQueryなど)。 `yarn add [package]`でインストールします。
 
-**Dev Dependencies** are libraries used during development or to build your application (Webpack, SASS, linters, testing frameworks, etc). You install those with `yarn add --dev [package]`.
+**Dev Dependencies** は開発やビルドしている間だけ使うパッケージです(Webpack, SASS, linters, テスティングフレームワークなど)。`yarn add --dev [package]`でインストールします。
 
-Next section: [02 - Babel, ES6, ESLint, Flow, Jest, Husky](/tutorial/02-babel-es6-eslint-flow-jest-husky)
+(原文: [01 - Node, Yarn, and package.json](https://github.com/verekia/js-stack-from-scratch/blob/master/tutorial/01-node-yarn-package-json.md))
 
-Back to the [table of contents](https://github.com/verekia/js-stack-from-scratch#table-of-contents).
+次章: [02 - Babel, ES6, ESLint, Flow, Jest, Husky](/tutorial/02-babel-es6-eslint-flow-jest-husky)
+
+[目次](https://github.com/takahashim/js-stack-from-scratch#table-of-contents)に戻る
+

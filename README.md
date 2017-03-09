@@ -1,4 +1,4 @@
-# JavaScript Stack from Scratch
+# ゼロから始めるJavaScript生活
 
 [![Build Status](https://travis-ci.org/verekia/js-stack-from-scratch.svg?branch=master)](https://travis-ci.org/verekia/js-stack-from-scratch) [![Join the chat at https://gitter.im/js-stack-from-scratch/Lobby](https://badges.gitter.im/js-stack-from-scratch/Lobby.svg)](https://gitter.im/js-stack-from-scratch/Lobby)
 
@@ -12,21 +12,21 @@
 [![Webpack](/img/webpack-padded-90.png)](https://webpack.github.io/)
 [![Bootstrap](/img/bootstrap-padded-90.png)](http://getbootstrap.com/)
 
-Welcome to my modern JavaScript stack tutorial: **JavaScript Stack from Scratch**.
+モダンJavaScriptスタックチュートリアル、**ゼロから始めるJavaScript生活**へようこそ。
 
-> 🎉 **This is the V2 of the tutorial, major changes happened since the 2016 release. Check the [Change Log](/CHANGELOG.md)!**
+> 🎉**これは2016年に公開した初版を改訂した第2版です。[Change Log](/CHANGELOG.md)もどうぞ!**
 
-This is a straight-to-the-point guide to assembling a JavaScript stack. It requires some general programming knowledge, and JavaScript basics. **It focuses on wiring tools together** and giving you the **simplest possible example** for each tool. You can see this tutorial as *a way to write your own boilerplate from scratch*. Since the goal of this tutorial is to assemble various tools, I do not go into details about how these tools work individually. Refer to their documentation or find other tutorials if you want to acquire deeper knowledge in them.
+これはJavaScriptスタックを使い始めるための最速ガイドです。このガイドは一般的なプログラミングの知識とJavaScriptの基礎を前提としています。**これら全てのツールを一緒につなぎ合わせることにフォーカスしており**、各ツールについて**可能な限りシンプルな例**を提供します。このチュートリアルは、**独自のボイラープレートをゼロから準備するための方法**として見ることもできます。このチュートリアルのゴールはさまざまなツールを組み合わせるところまでで、各ツールの詳細をそれぞれ紹介することはしません。より詳しい知識を得るためにはそれぞれのツールのドキュメントにあたるか、他のチュートリアルを探してください。
 
-You don't need to use this entire stack if you build a simple web page with a few JS interactions of course (a combination of Browserify/Webpack + Babel + jQuery is enough to be able to write ES6 code in different files), but if you want to build a web app that scales, and need help setting things up, this tutorial will work great for you.
+もちろん、ちょっとしたJSによるインタラクションを含むだけのシンプルなウェブページを作るのであれば、ここで紹介するスタックを全て使う必要はありません(ES6コードを複数のファイルに書きたいのであれば、Browserify/Webpack + Babel + jQueryの組み合わせで十分です)。しかし、スケールするウェブアプリを構築するにあたってセットアップの手助けが必要であれば、このチュートリアルが重宝するでしょう。
 
-A big chunk of the stack described in this tutorial uses React. If you are beginning and just want to learn React, [create-react-app](https://github.com/facebookincubator/create-react-app) will get you up and running with a React environment very quickly with a pre-made configuration. I would for instance recommend this approach to someone who arrives in a team that's using React and needs to catch up with a learning playground. In this tutorial you won't use a pre-made configuration, because I want you to understand everything that's happening under the hood.
+このチュートリアルで説明しているスタックはその大部分にReactを使用しています。もし初心者の方がReactについてのみ学びたいのであれば、[create-react-app](https://github.com/facebookincubator/create-react-app)で設定済みのReact環境をすぐに試すことができます。例えばすでにReactを使っているチームに加わり、学習用playgroundでキャッチアップするということであれば、このようなアプローチをお勧めします。このチュートリアルでは、内部で何が行っているかをすべて理解してもらえるよう、既存の設定を使わないようにしています。
 
-Code examples are available for each chapter, and you can run them all with `yarn && yarn start`. I recommend writing everything from scratch yourself by following the **step-by-step instructions** though.
+コード例は章ごとに用意しており、それぞれ`yarn && yarn start`で実行できます。とはいえ、各章の**ステップバイステップの指示**に従って全てゼロから入力することを推奨します。
 
-Final code available in the [JS-Stack-Boilerplate repository](https://github.com/verekia/js-stack-boilerplate). It works on Linux, macOS, and Windows.
+最終的なコードは[JS-Stack-Boilerplate repository](https://github.com/verekia/js-stack-boilerplate)から入手可能です。これはLinuxとmacOS、そしてWindowsで動作します。
 
-## Table of contents
+## 目次
 
 [01 - Node, Yarn, `package.json`](/tutorial/01-node-yarn-package-json)
 
@@ -46,17 +46,17 @@ Final code available in the [JS-Stack-Boilerplate repository](https://github.com
 
 [09 - Travis, Coveralls, Heroku](/tutorial/09-travis-coveralls-heroku)
 
-## Coming up next
+## 今後の予定
 
-Setting up your editor (Atom first), MongoDB, Progressive Web App.
+エディタの設定(まずはAtom)、MongoDB、プログレッシブWebアプリケーション。
 
-## Translations
+## 翻訳
 
-If you want to add your translation, please read the [translation recommendations](/how-to-translate.md) to get started!
+翻訳を追加したい場合、[translation recommendations](/how-to-translate.md)を読んでから始めてください!
 
 ### V2
 
-Your link here soon ;)
+すぐにここに載せます ;)
 
 ### V1
 
